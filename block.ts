@@ -46,10 +46,9 @@ class Block {
 
   static mineBlock(lastBlock: Block, data: any): Block {
     const timestamp = Date.now(); // get the current time in epoch
-    const lastHash = lastBlock.ownHash; // get the hash of the previous block
     const hash = "todo-hash";
 
-    return new this(timestamp, lastHash, hash, data);
+    return new this(timestamp, lastBlock.ownHash, hash, data);
   }
 }
 
