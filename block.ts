@@ -1,3 +1,5 @@
+import { SHA256 } from "crypto-js";
+
 class Block {
   /*
     @param: timestamp- the current time in seconds when the block will be created
@@ -18,7 +20,7 @@ class Block {
    * @returns the value for the block
    */
 
-  toString = () => {
+  toString(): string {
     return `
     Block:
     --------------------
@@ -27,7 +29,7 @@ class Block {
     Hash - ${this.ownHash.substring(0, 10)}
     Data - ${this.data}
     `;
-  };
+  }
 
   /**
    * @returns the block instance as genesis block for the initial data
@@ -49,6 +51,16 @@ class Block {
     const hash = "todo-hash";
 
     return new this(timestamp, lastBlock.ownHash, hash, data);
+  }
+  /**
+   *
+   * @param timestamp the current time in seconds when the block will be created
+   * @param prevBlock the previous block in the chain
+   * @param data the data for the current block that is to be mined
+   * @returns the hash of the block
+   */
+  static hashGenerator(timestamp: any, prevBlock: Block, data: any): string {
+    return SHA256(timestamp + prevBlock + data).toString();
   }
 }
 
