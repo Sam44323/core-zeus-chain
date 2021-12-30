@@ -4,7 +4,8 @@
     "name": "@Sam44323"
   },
   "scripts": {
-    "dev-test": "nodemon test/block-test.ts"
+    "dev-test": "nodemon test/block-test.ts",
+    "watch-proj": "tsc -w"
   },
   "version": "1.0.0",
   "main": "index.js",
