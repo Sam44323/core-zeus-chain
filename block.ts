@@ -30,7 +30,7 @@ class Block {
   };
 
   /**
-   * @returns the hash of the block as genesis block for the initial data
+   * @returns the block instance as genesis block for the initial data
    */
 
   static genesis(): Block {
