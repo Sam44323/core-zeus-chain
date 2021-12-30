@@ -41,7 +41,7 @@ class Block {
    *
    * @param lastBlock the previous mined block for the chain
    * @param data the data for the current block that is to be mined
-   * @returns new block based on the required args
+   * @returns new mined block
    */
 
   static mineBlock(lastBlock: Block, data: any): Block {
