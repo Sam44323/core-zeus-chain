@@ -48,19 +48,23 @@ class Block {
 
   static mineBlock(lastBlock: Block, data: any): Block {
     const timestamp = Date.now(); // get the current time in epoch
-    const hash = "todo-hash";
+    const hash = Block.hashGenerator(timestamp, lastBlock.ownHash, data);
 
     return new this(timestamp, lastBlock.ownHash, hash, data);
   }
   /**
    *
    * @param timestamp the current time in seconds when the block will be created
-   * @param prevBlock the previous block in the chain
+   * @param prevBlock the previous block hash in the chain
    * @param data the data for the current block that is to be mined
    * @returns the hash of the block
    */
-  static hashGenerator(timestamp: any, prevBlock: Block, data: any): string {
-    return SHA256(timestamp + prevBlock + data).toString();
+  static hashGenerator(
+    timestamp: any,
+    prevBlockHash: string,
+    data: any
+  ): string {
+    return SHA256(timestamp + prevBlockHash + data).toString();
   }
 }
 
