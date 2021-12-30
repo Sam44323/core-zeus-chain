@@ -34,7 +34,7 @@ class Block {
    */
 
   static genesis(): Block {
-    return new Block("Genesis-time", "-----", "f1r57-h45h", []);
+    return new Block("Genesis-time", "-----", "f1r57-sha956", []);
   }
 }
 
