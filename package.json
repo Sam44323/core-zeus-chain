@@ -10,10 +10,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.0",
     "nodemon": "^2.0.15"
   }
 }
