@@ -14,6 +14,7 @@ class Block {
   ) {}
 
   /**
+   * using 0,10 to print only the first 10 characters of the hash
    * @returns the value for the block
    */
 
@@ -21,7 +22,7 @@ class Block {
     return `
     Block-
     Timestamp - ${this.timestamp}
-    Last Hash - ${this.prevHash}
+    Last Hash - ${this.prevHash.substring(0, 10)}
     Hash - ${this.ownHash}
     Data - ${this.data}
     `;
