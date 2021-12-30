@@ -10,7 +10,7 @@ class Block {
     public timestamp: string,
     public prevHash: string,
     public ownHash: string,
-    public data: string
+    public data: any
   ) {}
 
   /**
@@ -28,6 +28,14 @@ class Block {
     Data - ${this.data}
     `;
   };
+
+  /**
+   * @returns the hash of the block as genesis block for the initial data
+   */
+
+  static genesis(): Block {
+    return new Block("Genesis-time", "-----", "f1r57-h45h", []);
+  }
 }
 
 export default Block;
