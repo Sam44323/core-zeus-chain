@@ -4,7 +4,7 @@
     "name": "@Sam44323"
   },
   "scripts": {
-    "dev-test": "nodemon block-test.ts"
+    "dev-test": "nodemon test/block-test.ts"
   },
   "version": "1.0.0",
   "main": "index.js",
