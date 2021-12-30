@@ -20,10 +20,10 @@ class Block {
   toString = () => {
     return `
     Block-
-    timestamp - ${this.timestamp}
-    prevHash - ${this.prevHash}
-    ownHash - ${this.ownHash}
-    data - ${this.data}
+    Timestamp - ${this.timestamp}
+    Last Hash - ${this.prevHash}
+    Hash - ${this.ownHash}
+    Data - ${this.data}
     `;
   };
 }
