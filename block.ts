@@ -37,6 +37,13 @@ class Block {
     return new this("Genesis-time", "-----", "f1r57-sha956", []);
   }
 
+  /**
+   *
+   * @param lastBlock the previous mined block for the chain
+   * @param data the data for the current block that is to be mined
+   * @returns new block based on the required args
+   */
+
   static mineBlock(lastBlock: Block, data: any): Block {
     const timestamp = Date.now(); // get the current time in epoch
     const lastHash = lastBlock.ownHash; // get the hash of the previous block
