@@ -7,7 +7,7 @@ class Block {
    */
 
   constructor(
-    public timestamp: string,
+    public timestamp: any,
     public prevHash: string,
     public ownHash: string,
     public data: any
@@ -34,7 +34,15 @@ class Block {
    */
 
   static genesis(): Block {
-    return new Block("Genesis-time", "-----", "f1r57-sha956", []);
+    return new this("Genesis-time", "-----", "f1r57-sha956", []);
+  }
+
+  static mineBlock(lastBlock: Block, data: any): Block {
+    const timestamp = Date.now(); // get the current time in epoch
+    const lastHash = lastBlock.ownHash; // get the hash of the previous block
+    const hash = "todo-hash";
+
+    return new this(timestamp, lastHash, hash, data);
   }
 }
 
