@@ -10,7 +10,7 @@
 
 ---
 
-**This repo contains core zeus chain code**
+_This repo contains core zeus chain code_
 
 # Features
 
@@ -27,6 +27,18 @@
 - Multi-Chain Validation
 - WSS support
 - Wallet creation and transaction signing with native token
+
+---
+
+## **Tech-stack**
+
+- Typescript
+- Jest
+- Nodemon
+- Crypto-JS
+- Ts-node
+
+---
 
 **Want to contribute? Hop on by forking the repo but go through the following scripts for the project**
 
@@ -56,6 +68,6 @@ yarn dev-test
 
 **Note:**
 
-_You can add custom scripts to log other files_
+**You can add custom scripts to log other files**
 
 ---
