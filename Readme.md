@@ -1,1 +1,1 @@
-# Code for Zeus-Chain
+# Code for zeus-chain
