@@ -29,4 +29,11 @@ describe("Blockchain", () => {
     testChain.chain[0].data = "wrong-genesis-data";
     expect(bChain.isValidChain(testChain.chain)).toBe(false);
   });
+
+  it("invalidates a corrupt chain", () => {
+    testChain.addBlock("test-data");
+    testChain.chain[1].data = "corrupt-data";
+
+    expect(bChain.isValidChain(testChain.chain)).toBe(false);
+  });
 });
