@@ -74,6 +74,8 @@ yarn dev-test
 yarn test
 ```
 
+---
+
 **Note:**
 
 **You can add custom scripts to log other files**
