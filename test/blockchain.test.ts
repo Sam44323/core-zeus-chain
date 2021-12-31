@@ -15,6 +15,6 @@ describe("Blockchain", () => {
   it("adds a new block to the chain", () => {
     const data = "new-block-data";
     bChain.addBlock(data);
-    expect(bChain.chain[1].data).toEqual(data);
+    expect(bChain.chain[bChain.chain.length - 1].data).toEqual(data);
   });
 });
