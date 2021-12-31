@@ -38,6 +38,8 @@ _This repo contains core zeus chain code_
 - Express
 - Crypto-JS
 - Nodemon
+- Cors
+- Dotenv
 - Ts-node
 
 ---
