@@ -15,9 +15,11 @@ class Blockchain {
    * @param data that is to be added to the newly mined block
    */
 
-  addBlock(data: any) {
+  addBlock(data: any): Block {
     const block = Block.mineBlock(this.chain[this.chain.length - 1], data);
     this.chain.push(block);
+
+    return block;
   }
 }
 
