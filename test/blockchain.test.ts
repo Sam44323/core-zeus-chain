@@ -22,6 +22,6 @@ describe("Blockchain", () => {
 
   it("validates the chain", () => {
     testChain.addBlock("test-data");
-    expect(bChain.isValidChain(testChain.chain)).toEqual(true);
+    expect(bChain.isValidChain(testChain.chain)).toBe(true);
   });
 });
