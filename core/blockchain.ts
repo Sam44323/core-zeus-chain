@@ -54,7 +54,7 @@ class Blockchain {
   }
 
   /**
-   * Method for replacing the chain with the new longest chain which is validated
+   * Method for replacing the current chain with the new longest chain which is validated
    * @param newChain that is to be validated and replaced if valid
    */
 
