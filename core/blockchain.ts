@@ -1,5 +1,9 @@
 import Block from "./block";
 
+/**
+ * The main chain class for creating chain of blocks
+ */
+
 class Blockchain {
   public chain: Block[] = [];
 
