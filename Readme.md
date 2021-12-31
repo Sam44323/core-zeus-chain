@@ -5,7 +5,8 @@
 ![Ts-node](https://img.shields.io/badge/-Tsnode-333333?style=for-the-badge&logo=ts-node&logoColor=61dbfb)
 ![Typescript](https://img.shields.io/badge/-Typescript-333333?style=for-the-badge&logo=typescript&logoColor=61dbfb)
 ![Node](https://img.shields.io/badge/-Node.JS-333333?style=for-the-badge&logo=node.js&logoColor=61dbfb)
-![Nodemon](https://img.shields.io/badge/-Nodemon-333333?style=for-the-badge&logo=nodemon.js&logoColor=61dbfb)
+![Express](https://img.shields.io/badge/-Express-333333?style=for-the-badge&logo=express&logoColor=61dbfb)
+![Nodemon](https://img.shields.io/badge/-Nodemon-333333?style=for-the-badge&logo=nodemon&logoColor=61dbfb)
 ![Jest](https://img.shields.io/badge/-Jest-333333?style=for-the-badge&logo=jest&logoColor=61dbfb)
 
 ---
@@ -34,8 +35,9 @@ _This repo contains core zeus chain code_
 
 - Typescript
 - Jest
-- Nodemon
+- Express
 - Crypto-JS
+- Nodemon
 - Ts-node
 
 ---
