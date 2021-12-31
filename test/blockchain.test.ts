@@ -24,4 +24,9 @@ describe("Blockchain", () => {
     testChain.addBlock("test-data");
     expect(bChain.isValidChain(testChain.chain)).toBe(true);
   });
+
+  it("invalidates a chain with wrong genesis block", () => {
+    testChain.chain[0].data = "wrong-genesis-data";
+    expect(bChain.isValidChain(testChain.chain)).toBe(false);
+  });
 });
