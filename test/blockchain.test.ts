@@ -36,4 +36,10 @@ describe("Blockchain", () => {
 
     expect(bChain.isValidChain(testChain.chain)).toBe(false);
   });
+
+  it("replaces a chain with a valid chain", () => {
+    testChain.addBlock("test-data");
+    bChain.replaceChain(testChain);
+    expect(bChain.chain).toEqual(testChain.chain);
+  });
 });
