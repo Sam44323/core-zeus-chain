@@ -8,4 +8,6 @@ const chainInitializer = () => {
 
 const getZeusBlockchain = () => zeusBlockchain;
 
-export { chainInitializer, getZeusBlockchain };
+const addNewBlock = (data: any) => zeusBlockchain.addBlock(data);
+
+export { chainInitializer, getZeusBlockchain, addNewBlock };
