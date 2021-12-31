@@ -17,5 +17,5 @@ app.use(zeusChainRoute);
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
-  chainInitializer();
+  chainInitializer(); // initializing the instance of the blockchain
 });

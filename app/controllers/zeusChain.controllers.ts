@@ -1,12 +1,24 @@
 import { Request, Response } from "express";
 import { getZeusBlockchain, addNewBlock } from "../utils/block-initializer";
 
+/**
+ * @param req request
+ * @param res response
+ * It returns the blockchain data
+ */
+
 export const getBlockData = (req: Request, res: Response) => {
   res.status(200).json({
     message: "Data for blockchain",
     data: getZeusBlockchain().chain,
   });
 };
+
+/**
+ * @param req request
+ * @param res response
+ * adds a new block to the blockchain and returns the new blockchain data
+ */
 
 export const addBlockData = (req: Request, res: Response) => {
   const { data } = req.body;
