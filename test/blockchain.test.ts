@@ -42,4 +42,11 @@ describe("Blockchain", () => {
     bChain.replaceChain(testChain);
     expect(bChain.chain).toEqual(testChain.chain);
   });
+
+  it("does not replace with the one less than or equal to the length for the current chain", () => {
+    bChain.addBlock("test-data");
+    bChain.replaceChain(testChain);
+
+    expect(bChain.chain).not.toEqual(testChain.chain);
+  });
 });
