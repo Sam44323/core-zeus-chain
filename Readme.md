@@ -42,7 +42,7 @@ _This repo contains core zeus chain code_
 
 **Want to contribute? Hop on by forking the repo but surely go through the following scripts before starting the project**
 
-## **Installing the dependencies**
+### **Installing the dependencies**
 
 ---
 
@@ -50,7 +50,7 @@ _This repo contains core zeus chain code_
 yarn
 ```
 
-## **Running the watcher**
+### **Running the watcher**
 
 ---
 
@@ -58,12 +58,20 @@ yarn
 yarn watch-proj
 ```
 
-## **Running the logger**
+### **Running the logger**
 
 ---
 
 ```bash
 yarn dev-test
+```
+
+### **Running the tests**
+
+---
+
+```bash
+yarn test
 ```
 
 **Note:**
