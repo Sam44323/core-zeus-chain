@@ -16,7 +16,7 @@ class Block {
   ) {}
 
   /**
-   * using 0,10 to print only the first 10 characters of the hash
+   * using (0,10) to print only the first 10 characters of the hash
    * @returns the value for the block
    */
 
