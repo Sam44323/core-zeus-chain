@@ -1,4 +1,4 @@
-import Blockchain from "../core/blockchain";
+import Blockchain from "../../core/blockchain";
 
 let zeusBlockchain: Blockchain;
 
