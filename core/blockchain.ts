@@ -52,6 +52,24 @@ class Blockchain {
 
     return true;
   }
+
+  /**
+   * Method for replacing the chain with the new longest chain which is validated
+   * @param newChain that is to be validated and replaced if valid
+   */
+
+  replaceChain(newChain: Blockchain) {
+    if (newChain.chain.length <= this.chain.length) {
+      console.log("Received chain is not longer than the current chain.");
+      return;
+    } else if (!this.isValidChain(newChain.chain)) {
+      console.log("Received chain is not valid.");
+      return;
+    }
+
+    console.log("Replacing the current chain with the new chain!");
+    this.chain = newChain.chain;
+  }
 }
 
 export default Blockchain;
