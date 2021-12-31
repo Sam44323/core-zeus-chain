@@ -47,7 +47,7 @@ class Block {
    */
 
   static mineBlock(lastBlock: Block, data: any): Block {
-    const timestamp = Date.now(); // get the current time in epoch
+    const timestamp = Date.now(); // getting the current time in epoch
     const hash = Block.hashGenerator(timestamp, lastBlock.ownHash, data);
 
     return new this(timestamp, lastBlock.ownHash, hash, data);
