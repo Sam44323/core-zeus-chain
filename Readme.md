@@ -8,6 +8,7 @@
 ![Express](https://img.shields.io/badge/-Express-333333?style=for-the-badge&logo=express&logoColor=61dbfb)
 ![Nodemon](https://img.shields.io/badge/-Nodemon-333333?style=for-the-badge&logo=nodemon&logoColor=61dbfb)
 ![Jest](https://img.shields.io/badge/-Jest-333333?style=for-the-badge&logo=jest&logoColor=61dbfb)
+![Socket.IO](https://img.shields.io/badge/-Socket.IO-333333?style=for-the-badge&logo=socket.io&logoColor=61dbfb)
 
 ---
 
@@ -38,6 +39,7 @@ _This repo contains core zeus chain code_
 - Express
 - Crypto-JS
 - Nodemon
+- Socket.IO
 - Cors
 - Dotenv
 - Ts-node
