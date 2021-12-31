@@ -2,7 +2,7 @@ import Block from "../core/block";
 import Blockchain from "../core/blockchain";
 
 describe("Blockchain", () => {
-  let bChain;
+  let bChain: Blockchain;
 
   beforeEach(() => {
     bChain = new Blockchain();
