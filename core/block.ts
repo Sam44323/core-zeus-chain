@@ -66,6 +66,17 @@ class Block {
   ): string {
     return SHA256(timestamp + prevBlockHash + data).toString();
   }
+
+  /**
+   * util function for hash calculation
+   * @param block the block for which we need to calculate the hash
+   * @returns the hash for the block data
+   */
+
+  static generatedHash(block: Block): string {
+    const { timestamp, prevHash, data } = block;
+    return Block.hashGenerator(timestamp, prevHash, data);
+  }
 }
 
 export default Block;

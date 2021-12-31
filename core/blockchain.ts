@@ -35,6 +35,22 @@ class Blockchain {
     if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) {
       return false;
     }
+
+    // checking the hash generated for each block and also checking whether the data is tampering or not by generating the hash for each block
+
+    for (let i = 1; i < chain.length; i++) {
+      const block = chain[i];
+      const lastBlock = chain[i - 1];
+
+      if (
+        block.prevHash !== lastBlock.ownHash ||
+        block.ownHash !== Block.generatedHash(block)
+      ) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }
 
