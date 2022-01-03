@@ -2,6 +2,12 @@ import WebSocket from "ws";
 import dotenv from "dotenv";
 import Blockchain from "../core/blockchain";
 
+/**
+ * The main idea for this peer-to-peer server is:
+ * - Connecting to an existing peer socket
+ * - If no peer socket is found, create a new one
+ */
+
 dotenv.config({
   path: ".env",
 });
