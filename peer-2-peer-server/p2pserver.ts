@@ -30,6 +30,7 @@ class P2PServer {
   listen() {
     const wServer = new WebSocket.Server({ port: P2P_PORT }); // creating a new server instance for the peer
     wServer.on("connection", (socket) => this.connectSocket(socket));
+    console.log(`Listening for the peer-to-peer connections on: ${P2P_PORT}`);
   }
 
   /**
