@@ -23,10 +23,19 @@ class P2PServer {
     this.sockets = []; // list of sockets servers that end up connecting to this peer
   }
 
+  /**
+   * method for listening for a new server connection to this peer
+   */
+
   listen() {
     const wServer = new WebSocket.Server({ port: P2P_PORT }); // creating a new server instance for the peer
     wServer.on("connection", (socket) => this.connectSocket(socket));
   }
+
+  /**
+   * @param socket the socket add to the socket list
+   * method for adding a new connected peer to the socket-list
+   */
 
   connectSocket(socket: WebSocket) {
     this.sockets.push(socket); // add the socket to the list of sockets
