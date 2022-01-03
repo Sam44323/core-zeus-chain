@@ -48,6 +48,8 @@ _This repo contains core zeus chain code_
 
 **Want to contribute? Hop on by forking the repo but surely go through the following scripts before starting the project**
 
+# Scripts
+
 ### **Installing the dependencies**
 
 ---
