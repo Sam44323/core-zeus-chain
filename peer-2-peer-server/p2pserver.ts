@@ -38,7 +38,7 @@ class P2PServer {
    */
 
   connectSocket(socket: WebSocket) {
-    this.sockets.push(socket); // add the socket to the list of sockets
+    this.sockets.push(socket); // add the socket-url for the peer to the list of sockets
     console.log(`Socket connected to peer ${socket.url}`);
   }
 }
