@@ -36,7 +36,7 @@ class P2PServer {
   listen() {
     const wServer = new WebSocket.Server({ port: P2P_PORT }); // creating a new server instance for the peer
     wServer.on("connection", (socket) => this.connectSocket(socket));
-    this.connectToPeers();
+    this.connectToPeers(); // running this method to connect to the active peers if any
     console.log(`Listening for the peer-to-peer connections on: ${P2P_PORT}`);
   }
 
@@ -61,7 +61,7 @@ class P2PServer {
 
   connectSocket(socket: WebSocket) {
     this.sockets.push(socket); // add the socket-url for the peer to the list of sockets
-    console.log(`Socket connected to peer ${socket.url}`);
+    console.log(`Socket connected`);
   }
 }
 
