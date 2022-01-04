@@ -49,3 +49,5 @@ class P2PServer {
     console.log(`Socket connected to peer ${socket.url}`);
   }
 }
+
+export default P2PServer;
