@@ -6,6 +6,7 @@ let zeusBlockchain: Blockchain;
 const chainInitializer = () => {
   zeusBlockchain = new Blockchain();
   const p2pServer = new P2PServer(zeusBlockchain);
+  p2pServer.listen();
 };
 
 const getZeusBlockchain = () => zeusBlockchain;
