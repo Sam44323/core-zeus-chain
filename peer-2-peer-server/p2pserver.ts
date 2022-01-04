@@ -44,7 +44,15 @@ class P2PServer {
    * method for connecting the current peers to the available socket-connection for another peer
    */
 
-  connectToPeers() {}
+  connectToPeers() {
+    peers.forEach((peer) => {
+      // example of peers: ws://localhost:5001
+      const socket = new WebSocket(peer as string); // creating a new socket object based on the peer-socket address
+
+      // we are using open to have the assurance that even if the peers is not open on port 5001, we can still connect to it when it is open
+      socket.on("open", () => this.connectSocket(socket));
+    });
+  }
 
   /**
    * @param socket the socket add to the socket list
