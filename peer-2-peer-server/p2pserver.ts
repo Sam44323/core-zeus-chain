@@ -41,7 +41,7 @@ class P2PServer {
   }
 
   /**
-   * method for connecting the current peers to the available socket-connection
+   * method for connecting the current peers to the available socket-connection for another peer
    */
 
   connectToPeers() {}
