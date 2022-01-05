@@ -66,7 +66,7 @@ class P2PServer {
 
     this.messageHandler(socket); // running the message handler method for the socket to subscribe to the message
 
-    socket.send(JSON.stringify(this.blockchain.chain)); // sending the blockchain to the peers
+    socket.send(JSON.stringify(this.blockchain.chain)); // sending the blockchain to the peers from other peers
   }
 
   // for handling cross peers communication in the blockchain
