@@ -63,6 +63,8 @@ class P2PServer {
   connectSocket(socket: WebSocket) {
     this.sockets.push(socket); // add the socket-url for the peer to the list of sockets
     console.log(`Socket connected`);
+
+    this.messageHandler(socket); // running the message handler method for the socket to subscribe to the message
   }
 
   // for handling cross peers communication in the blockchain
@@ -70,7 +72,7 @@ class P2PServer {
   messageHandler(socket: WebSocket) {
     socket.on("message", (message: string) => {
       const data = JSON.parse(message); // converting the stringified JSON message to JSON object
-      console.log(data);
+      console.log("data", data);
     });
   }
 }
