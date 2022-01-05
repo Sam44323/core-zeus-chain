@@ -69,7 +69,7 @@ class P2PServer {
 
   messageHandler(socket: WebSocket) {
     socket.on("message", (message: string) => {
-      const data = JSON.parse(message); // converting the stringified JSON message to JSON data
+      const data = JSON.parse(message); // converting the stringified JSON message to JSON object
       console.log(data);
     });
   }
