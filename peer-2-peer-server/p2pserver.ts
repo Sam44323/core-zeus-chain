@@ -45,6 +45,7 @@ class P2PServer {
    */
 
   connectToPeers() {
+    // connecting to all the listed peers active in the PEERS env
     peers.forEach((peer) => {
       // example of peers: ws://localhost:5001
       const socket = new WebSocket(peer as string); // creating a new socket object based on the peer-socket address
