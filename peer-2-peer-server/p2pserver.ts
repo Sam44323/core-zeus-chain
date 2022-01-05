@@ -65,6 +65,8 @@ class P2PServer {
     console.log(`Socket connected`);
 
     this.messageHandler(socket); // running the message handler method for the socket to subscribe to the message
+
+    socket.send(JSON.stringify(this.blockchain.chain)); // sending the blockchain to the peers
   }
 
   // for handling cross peers communication in the blockchain
