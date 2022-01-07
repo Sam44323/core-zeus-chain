@@ -92,7 +92,7 @@ class P2PServer {
    * method for sending a message to all the peers to sync then the chain for the entire blockchain
    */
 
-  syncChain() {
+  syncChains() {
     this.sockets.forEach((socket: WebSocket) => this.sendChain(socket));
   }
 }
