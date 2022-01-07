@@ -66,7 +66,7 @@ class P2PServer {
 
     this.messageHandler(socket); // running the message handler method for the socket to subscribe to the message
 
-    socket.send(JSON.stringify(this.blockchain.chain)); // sending the blockchain to the peers from other peers
+    this.sendChain(socket);
   }
 
   // for handling cross peers communication in the blockchain
@@ -77,6 +77,23 @@ class P2PServer {
       console.log(data);
       this.blockchain.replaceChain({ chain: data } as any); // replacing the current chain with the new one for the peers with longer-chains in action
     });
+  }
+
+  /**
+   * util method for sending a message with chain data for current peer to all the peers
+   * @param socket the socket to which the message is sent
+   */
+
+  sendChain(socket: WebSocket) {
+    socket.send(JSON.stringify(this.blockchain.chain)); // sending the blockchain to the peers from other peers
+  }
+
+  /**
+   * method for sending a message to all the peers to sync then the chain for the entire blockchain
+   */
+
+  syncChain() {
+    this.sockets.forEach((socket: WebSocket) => this.sendChain(socket));
   }
 }
 
