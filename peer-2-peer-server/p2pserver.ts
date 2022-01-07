@@ -74,7 +74,8 @@ class P2PServer {
   messageHandler(socket: WebSocket) {
     socket.on("message", (message: string) => {
       const data = JSON.parse(message); // converting the stringified JSON message to JSON object
-      console.log("data", data);
+      console.log(data);
+      this.blockchain.replaceChain({ chain: data } as any); // replacing the current blockchain with the new one
     });
   }
 }
