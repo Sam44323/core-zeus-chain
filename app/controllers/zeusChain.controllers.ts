@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
-import { getZeusBlockchain, addNewBlock } from "../utils/block-initializer";
+import {
+  getZeusBlockchain,
+  addNewBlock,
+  p2pServer,
+} from "../utils/block-initializer";
 
 /**
  * @param req request
@@ -28,6 +32,7 @@ export const addBlockData = (req: Request, res: Response) => {
     });
   } else {
     addNewBlock(data);
+    p2pServer.syncChains(); // syncing the chains for the peers
     res.status(200).json({
       message: "Block added",
       data: getZeusBlockchain().chain,
