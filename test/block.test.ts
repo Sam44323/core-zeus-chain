@@ -17,4 +17,11 @@ describe("Block", () => {
   it("sets the `prevHash` to match the hash of the previous block", () => {
     expect(block.prevHash).toEqual(prevBlock.ownHash);
   });
+
+  it("generates a hash that matches the difficulty", () => {
+    console.log(block);
+    expect(block.ownHash.substring(0, DIFFICULTY)).toEqual(
+      "0".repeat(DIFFICULTY)
+    );
+  });
 });
