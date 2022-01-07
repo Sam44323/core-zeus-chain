@@ -66,13 +66,7 @@ class Block {
       );
     } while (hash.substring(0, DIFFICULTY) !== "0".repeat(DIFFICULTY)); // checking the hash for the required number of zeros
 
-    return new this(
-      timestamp,
-      lastBlock.ownHash,
-      hash,
-      data,
-      lastBlock.nonce + 1
-    );
+    return new this(timestamp, lastBlock.ownHash, hash, data, nonce);
   }
   /**
    *
