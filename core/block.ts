@@ -31,6 +31,7 @@ class Block {
     Last Hash - ${this.prevHash.substring(0, 10)}
     Hash - ${this.ownHash.substring(0, 10)}
     Data - ${this.data}
+    Nonce - ${this.nonce}
     `;
   }
 
