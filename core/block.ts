@@ -8,6 +8,7 @@ class Block {
     @param: lastHash- the hash of the previous block
     @param: hash- the hash of the current block
     @param: data- the data to be stored in the block
+    @param: nonce- the nonce for the mined block
    */
 
   constructor(
