@@ -52,13 +52,19 @@ class Block {
    */
 
   static mineBlock(lastBlock: Block, data: any): Block {
-    const timestamp = Date.now(); // getting the current time in epoch
-    const hash = Block.hashGenerator(
-      timestamp,
-      lastBlock.ownHash,
-      data,
-      lastBlock.nonce
-    );
+    let timestamp: number;
+    let hash: string;
+    let nonce: number = 0;
+    do {
+      nonce++; // nonce will increase as long as we don't get the hash that has the required number of zeros
+      timestamp = Date.now(); // getting the current time in epoch
+      hash = Block.hashGenerator(
+        timestamp,
+        lastBlock.ownHash,
+        data,
+        lastBlock.nonce
+      );
+    } while (hash.substring(4) === "0000");
 
     return new this(
       timestamp,
