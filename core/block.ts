@@ -8,6 +8,7 @@ class Block {
     @param: hash- the hash of the current block
     @param: data- the data to be stored in the block
     @param: nonce- the nonce for the mined block
+    @param: difficulty- the difficulty value when mining the block
    */
 
   constructor(
@@ -33,6 +34,7 @@ class Block {
     Hash - ${this.ownHash.substring(0, 10)}
     Data - ${this.data}
     Nonce - ${this.nonce}
+    Difficulty - ${this.difficulty}
     `;
   }
 
@@ -55,18 +57,29 @@ class Block {
     let timestamp: number;
     let hash: string;
     let nonce: number = 0;
+    let { difficulty } = lastBlock;
     do {
       nonce++; // nonce will increase as long as we don't get the hash that has the required number of zeros
       timestamp = Date.now(); // getting the current time in epoch
+      difficulty = Block.adjustDifficulty(lastBlock, timestamp); // for getting the difficulty value of the block
+
       hash = Block.hashGenerator(
         timestamp,
         lastBlock.ownHash,
         data,
-        lastBlock.nonce
+        nonce,
+        difficulty
       );
-    } while (hash.substring(0, DIFFICULTY) !== "0".repeat(DIFFICULTY)); // checking the hash for the required number of zeros
+    } while (hash.substring(0, difficulty) !== "0".repeat(difficulty)); // checking the hash for the required number of zeros based on the difficulty value
 
-    return new this(timestamp, lastBlock.ownHash, hash, data, nonce);
+    return new this(
+      timestamp,
+      lastBlock.ownHash,
+      hash,
+      data,
+      nonce,
+      difficulty
+    );
   }
   /**
    *
@@ -80,9 +93,12 @@ class Block {
     timestamp: any,
     prevBlockHash: string,
     data: any,
-    nonce: number
+    nonce: number,
+    difficulty: number
   ): string {
-    return SHA256(timestamp + prevBlockHash + data + nonce).toString();
+    return SHA256(
+      timestamp + prevBlockHash + data + nonce + difficulty
+    ).toString();
   }
 
   /**
@@ -92,8 +108,24 @@ class Block {
    */
 
   static generatedHash(block: Block): string {
-    const { timestamp, prevHash, data, nonce } = block;
-    return Block.hashGenerator(timestamp, prevHash, data, nonce);
+    const { timestamp, prevHash, data, nonce, difficulty } = block;
+    return Block.hashGenerator(timestamp, prevHash, data, nonce, difficulty);
+  }
+
+  /**
+   *
+   * @param lastBlock the previous block in the chain
+   * @param currentTime the current time taken for generating the hash(need not to be correct per-se)
+   * @returns the difficulty value based on that
+   */
+
+  static adjustDifficulty(lastBlock: Block, currentTime: number): number {
+    let { difficulty } = lastBlock;
+    difficulty =
+      lastBlock.timestamp + MINE_RATE > currentTime
+        ? difficulty + 1
+        : difficulty - 1;
+    return difficulty;
   }
 }
 
