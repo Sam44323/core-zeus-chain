@@ -20,8 +20,20 @@ describe("Block", () => {
 
   it("generates a hash that matches the difficulty", () => {
     console.log(block);
-    expect(block.ownHash.substring(0, DIFFICULTY)).toEqual(
-      "0".repeat(DIFFICULTY)
+    expect(block.ownHash.substring(0, block.difficulty)).toEqual(
+      "0".repeat(block.difficulty)
+    );
+  });
+
+  it("it lowers the difficulty for the slowly mined block", () => {
+    expect(Block.adjustDifficulty(block, block.timestamp + 360000)).toEqual(
+      block.difficulty - 1
+    );
+  });
+
+  it("raises the difficulty for the slowly mined block", () => {
+    expect(Block.adjustDifficulty(block, block.timestamp + 1)).toEqual(
+      block.difficulty + 1
     );
   });
 });

@@ -116,7 +116,7 @@ class Block {
    *
    * @param lastBlock the previous block in the chain
    * @param currentTime the current time taken for generating the hash(need not to be correct per-se)
-   * @returns the difficulty value based on that
+   * @returns the difficulty value
    */
 
   static adjustDifficulty(lastBlock: Block, currentTime: number): number {
