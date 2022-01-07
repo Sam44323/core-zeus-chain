@@ -1,4 +1,5 @@
-import Block, { DIFFICULTY } from "../core/block";
+import Block from "../core/block";
+import { DIFFICULTY } from "../utils/constants";
 
 describe("Block", () => {
   let data, prevBlock: Block, block: Block;
