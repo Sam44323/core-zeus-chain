@@ -1,4 +1,4 @@
-import Block from "../core/block";
+import Block, { DIFFICULTY } from "../core/block";
 
 describe("Block", () => {
   let data, prevBlock: Block, block: Block;

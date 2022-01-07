@@ -1,6 +1,6 @@
 import { SHA256 } from "crypto-js";
 
-const DIFFICULTY = 4;
+export const DIFFICULTY = 4;
 
 class Block {
   /*
