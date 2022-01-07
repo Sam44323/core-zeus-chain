@@ -51,7 +51,12 @@ class Block {
 
   static mineBlock(lastBlock: Block, data: any): Block {
     const timestamp = Date.now(); // getting the current time in epoch
-    const hash = Block.hashGenerator(timestamp, lastBlock.ownHash, data);
+    const hash = Block.hashGenerator(
+      timestamp,
+      lastBlock.ownHash,
+      data,
+      lastBlock.nonce
+    );
 
     return new this(
       timestamp,
@@ -66,14 +71,16 @@ class Block {
    * @param timestamp the current time in seconds when the block will be created
    * @param prevBlock the previous block hash in the chain
    * @param data the data for the current block that is to be mined
+   * @param nonce the nonce for the current block
    * @returns the hash of the block
    */
   static hashGenerator(
     timestamp: any,
     prevBlockHash: string,
-    data: any
+    data: any,
+    nonce: number
   ): string {
-    return SHA256(timestamp + prevBlockHash + data).toString();
+    return SHA256(timestamp + prevBlockHash + data + nonce).toString();
   }
 
   /**
@@ -83,8 +90,8 @@ class Block {
    */
 
   static generatedHash(block: Block): string {
-    const { timestamp, prevHash, data } = block;
-    return Block.hashGenerator(timestamp, prevHash, data);
+    const { timestamp, prevHash, data, nonce } = block;
+    return Block.hashGenerator(timestamp, prevHash, data, nonce);
   }
 }
 
