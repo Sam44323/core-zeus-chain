@@ -1,5 +1,5 @@
 import { SHA256 } from "crypto-js";
-import { DIFFICULTY } from "../utils/constants";
+import { DIFFICULTY, MINE_RATE } from "../utils/constants";
 
 class Block {
   /*
@@ -15,7 +15,8 @@ class Block {
     public prevHash: string,
     public ownHash: string,
     public data: any,
-    public nonce: number
+    public nonce: number,
+    public difficulty: number = DIFFICULTY
   ) {}
 
   /**
