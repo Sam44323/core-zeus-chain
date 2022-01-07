@@ -64,7 +64,7 @@ class Block {
         data,
         lastBlock.nonce
       );
-    } while (hash.substring(4) === "0000");
+    } while (hash.substring(0, DIFFICULTY) !== "0".repeat(DIFFICULTY)); // checking the hash for the required number of zeros
 
     return new this(
       timestamp,
