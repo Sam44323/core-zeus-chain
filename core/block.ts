@@ -1,5 +1,7 @@
 import { SHA256 } from "crypto-js";
 
+const DIFFICULTY = 4;
+
 class Block {
   /*
     @param: timestamp- the current time in seconds when the block will be created
@@ -12,7 +14,8 @@ class Block {
     public timestamp: any,
     public prevHash: string,
     public ownHash: string,
-    public data: any
+    public data: any,
+    public nonce: number
   ) {}
 
   /**
@@ -36,7 +39,7 @@ class Block {
    */
 
   static genesis(): Block {
-    return new this("Genesis-time", "-----", "f1r57-sha956", []);
+    return new this("Genesis-time", "-----", "f1r57-sha956", [], 0);
   }
 
   /**
@@ -50,7 +53,13 @@ class Block {
     const timestamp = Date.now(); // getting the current time in epoch
     const hash = Block.hashGenerator(timestamp, lastBlock.ownHash, data);
 
-    return new this(timestamp, lastBlock.ownHash, hash, data);
+    return new this(
+      timestamp,
+      lastBlock.ownHash,
+      hash,
+      data,
+      lastBlock.nonce + 1
+    );
   }
   /**
    *
