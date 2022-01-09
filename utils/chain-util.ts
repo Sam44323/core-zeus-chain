@@ -1,5 +1,6 @@
 import { ec as EC } from "elliptic";
 import { v1 as uuidV1 } from "uuid"; // using v1 for random uuid as it's based on timestamp
+import { SHA256 } from "crypto-js";
 /**
  * Side-Note:
  * sec stands for standards of efficient cryptography
@@ -19,6 +20,10 @@ class ChainUtil {
 
   static getUniqueId() {
     return uuidV1();
+  }
+
+  static hash(data: any) {
+    return SHA256(JSON.stringify(data)).toString();
   }
 }
 
