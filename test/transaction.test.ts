@@ -30,6 +30,10 @@ describe("Transaction", () => {
     expect(transactions.input.amount).toEqual(wallet.balance);
     console.log(transactions.input.amount, wallet.balance);
   });
+
+  it("validates a valid transaction", () => {
+    expect(Transaction.verifyTransaction(transactions)).toBe(true);
+  });
 });
 
 describe("Transaction issue checker for test", () => {

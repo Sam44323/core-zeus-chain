@@ -3,7 +3,14 @@ import Wallet from "./index";
 
 class Transaction {
   public id: string = "";
-  public input: EC.Signature | any; // consists the signature for the transactions
+  public input:
+    | any
+    | {
+        timestamp: number;
+        amount: number;
+        address: string;
+        signature: any;
+      }; // consists the signature for the transactions
   public output: any;
 
   /**
