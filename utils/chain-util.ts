@@ -39,7 +39,7 @@ class ChainUtil {
     signature: EC.Signature,
     dataHash: any
   ): boolean {
-    return true;
+    return ec.keyFromPublic(publicKey, "hex").verify(dataHash, signature);
   }
 }
 
