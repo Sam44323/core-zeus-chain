@@ -26,3 +26,13 @@ describe("Transaction", () => {
     ).toEqual(amount);
   });
 });
+
+describe("transaction that is exceeding the balance for the user", () => {
+  let transactions: any, wallet: any, recipient: any, amount: any;
+  beforeEach(() => {
+    wallet = new Wallet();
+    amount = 5000;
+    recipient = "r3c1p13nt";
+    transactions = Transaction.newTransaction(wallet, recipient, amount);
+  });
+});
