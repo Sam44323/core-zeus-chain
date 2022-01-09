@@ -1,9 +1,9 @@
-import ChainUtil from "../utils/chain-util";
+import ChainUtil, { EC } from "../utils/chain-util";
 import Wallet from "./index";
 
 class Transaction {
   public id: string = "";
-  public input: any; // consists the signature for the transactions
+  public input: EC.Signature | any; // consists the signature for the transactions
   public output: any;
 
   /**

@@ -25,6 +25,8 @@ class ChainUtil {
   static hash(data: any) {
     return SHA256(JSON.stringify(data)).toString();
   }
+
+  static verifySignature(publicKey: any, signature: EC.Signature) {}
 }
 
 export default ChainUtil;
