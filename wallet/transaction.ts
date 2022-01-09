@@ -66,11 +66,21 @@ class Transaction {
    * method that gives the users the ability to update a transaction
    */
 
-  static updateTransaction(
+  updateTransaction(
     senderWallet: Wallet,
     recipientAddress: any,
     amount: number
-  ) {}
+  ) {
+    // finding the sender's balance after transaction with which will be updated for the new transaction
+    const senderOutput = this.output.find(
+      (item: any) => item.address === senderWallet.publicKey
+    );
+
+    if (amount > senderOutput.amount) {
+      console.log(`Amount: ${amount} exceeds balance`);
+      return;
+    }
+  }
 
   /**
    *
