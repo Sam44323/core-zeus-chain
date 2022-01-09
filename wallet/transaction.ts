@@ -80,6 +80,21 @@ class Transaction {
       console.log(`Amount: ${amount} exceeds balance`);
       return;
     }
+
+    senderOutput.amount = senderOutput.amount - amount;
+    // updating a outputs array with the new data for transaction
+    this.output.push(
+      ...[
+        {
+          amount: senderOutput.amount,
+          address: senderWallet.publicKey,
+        },
+        {
+          amount,
+          address: recipientAddress,
+        },
+      ]
+    );
   }
 
   /**
