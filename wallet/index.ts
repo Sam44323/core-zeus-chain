@@ -8,7 +8,7 @@ class Wallet {
   constructor() {
     this.balance = INITIAL_BALANCE;
     this.keyPair = ChainUtil.genKeyPair();
-    this.publicKey = this.keyPair.getPublic().encode("hex", true);
+    this.publicKey = this.keyPair.getPublic().encode("hex", false);
   }
 
   toString() {
