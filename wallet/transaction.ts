@@ -8,7 +8,6 @@ class Transaction {
 
   /**
    * output-array:
-   * Each individual transaction is joined in pairs with the following structure
    * index[0]: contains the balance the sender will have after the transaction with the recipient is completed
    * index[1]: contains the amount of money the sender wants to send to the recipient
    */
