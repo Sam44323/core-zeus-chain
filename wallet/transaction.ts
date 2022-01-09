@@ -45,6 +45,8 @@ class Transaction {
       ]
     );
 
+    Transaction.signTransaction(transaction, senderWallet);
+
     return transaction;
   }
 
