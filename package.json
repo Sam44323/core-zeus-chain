@@ -9,6 +9,9 @@
     "test": "jest --watchAll",
     "serve": "nodemon app/app.ts"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
