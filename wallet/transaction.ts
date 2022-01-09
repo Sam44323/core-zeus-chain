@@ -20,7 +20,7 @@ class Transaction {
   }
 
   /**
-   * method that gives the users to create a transaction
+   * method that gives the users the ability to create a transaction
    */
   static newTransaction(
     senderWallet: Wallet,
