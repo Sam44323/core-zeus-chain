@@ -67,16 +67,16 @@ class Transaction {
 
   /**
    * @param dataHash the hashed data
-   * @param publicKey the public key of the sender
+   * @param transaction the transaction object
    * method for verifying the transaction
    */
 
-  static verifyTransaction(
-    dataHash: any,
-    publicKey: any,
-    transaction: Transaction
-  ) {
-    return ChainUtil.verifySignature(publicKey, dataHash, transaction.input);
+  static verifyTransaction(transaction: Transaction) {
+    return ChainUtil.verifySignature(
+      transaction.input.address,
+      transaction.input.signature,
+      ChainUtil.hash(transaction.output)
+    );
   }
 }
 
