@@ -1,4 +1,4 @@
-import { SHA256 } from "crypto-js";
+import ChainUtil from "../utils/chain-util";
 import { DIFFICULTY, MINE_RATE } from "../utils/constants";
 
 class Block {
@@ -96,7 +96,7 @@ class Block {
     nonce: number,
     difficulty: number
   ): string {
-    return SHA256(
+    return ChainUtil.hash(
       timestamp + prevBlockHash + data + nonce + difficulty
     ).toString();
   }

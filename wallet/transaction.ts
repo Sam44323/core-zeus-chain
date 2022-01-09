@@ -48,6 +48,13 @@ class Transaction {
     return transaction;
   }
 
+  /**
+   *
+   * @param transaction the transaction object
+   * @param senderWallet the wallet of the sender
+   * stores the input setter in the transaction object with the listed data
+   */
+
   static signTransaction(transaction: Transaction, senderWallet: any) {
     transaction.input = {
       timestamp: Date.now(),
