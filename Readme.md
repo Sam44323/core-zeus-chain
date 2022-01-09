@@ -9,6 +9,7 @@
 ![Nodemon](https://img.shields.io/badge/-Nodemon-333333?style=for-the-badge&logo=nodemon&logoColor=61dbfb)
 ![Jest](https://img.shields.io/badge/-Jest-333333?style=for-the-badge&logo=jest&logoColor=61dbfb)
 ![Socket.IO](https://img.shields.io/badge/-Socket.IO-333333?style=for-the-badge&logo=socket.io&logoColor=61dbfb)
+![Elliptic](https://img.shields.io/badge/-Elliptic-333333?style=for-the-badge&logo=Elliptic.JS&logoColor=61dbfb)
 
 ---
 
@@ -24,7 +25,7 @@ _This repo contains core zeus chain code_
 - Peers-to-Peers support, synchronization and addition
 - Consensus
 - Transaction pool
-- Key generation for chain
+- Key generation for chain using elliptic based cryptography
 - Reward for mining for miners
 - Multi-Chain Validation
 - WSS support
@@ -39,6 +40,7 @@ _This repo contains core zeus chain code_
 - Express
 - Crypto-JS
 - Nodemon
+- Elliptic
 - Socket.IO
 - Cors
 - Dotenv
