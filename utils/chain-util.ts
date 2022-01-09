@@ -26,6 +26,14 @@ class ChainUtil {
     return SHA256(JSON.stringify(data)).toString();
   }
 
+  /**
+   *
+   * @param publicKey the public key of the sender
+   * @param signature the signature for the data for the signed transaction
+   * @param dataHash the hashed data for the signed transaction
+   * @returns whether the signature is valid or not
+   */
+
   static verifySignature(
     publicKey: any,
     signature: EC.Signature,
