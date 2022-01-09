@@ -25,6 +25,11 @@ describe("Transaction", () => {
         .amount
     ).toEqual(amount);
   });
+
+  it("inputs the balance to the wallet", () => {
+    expect(transactions.input.amount).toEqual(wallet.balance);
+    console.log(transactions.input.amount, wallet.balance);
+  });
 });
 
 describe("Transaction issue checker for test", () => {

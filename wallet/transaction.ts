@@ -3,7 +3,7 @@ import Wallet from "./index";
 
 class Transaction {
   public id: string = "";
-  public input: any;
+  public input: any; // consists the signature for the transactions
   public output: any;
 
   /**
@@ -57,12 +57,12 @@ class Transaction {
    * stores the input setter in the transaction object with the listed data
    */
 
-  static signTransaction(transaction: Transaction, senderWallet: any) {
+  static signTransaction(transaction: Transaction, senderWallet: Wallet) {
     transaction.input = {
       timestamp: Date.now(),
       amount: senderWallet.balance,
       address: senderWallet.publicKey,
-      signature: senderWallet.sign(ChainUtil.hash(transaction.output)),
+      signature: senderWallet.signData(ChainUtil.hash(transaction.output)),
     };
   }
 }
