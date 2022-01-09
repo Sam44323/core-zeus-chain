@@ -18,3 +18,4 @@ class ChainUtil {
 }
 
 export default ChainUtil;
+export { EC };
