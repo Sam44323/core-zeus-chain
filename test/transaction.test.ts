@@ -34,6 +34,11 @@ describe("Transaction", () => {
   it("validates a valid transaction", () => {
     expect(Transaction.verifyTransaction(transactions)).toBe(true);
   });
+
+  it("invalidates a corrupt transaction", () => {
+    transactions.output[0].amount = 50000;
+    expect(Transaction.verifyTransaction(transactions)).toBe(false);
+  });
 });
 
 describe("Transaction issue checker for test", () => {
