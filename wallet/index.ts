@@ -9,4 +9,12 @@ class Wallet {
     this.keyPair = null;
     this.publicKey = null;
   }
+
+  toString() {
+    return `
+    Wallet -
+    publicKey: ${this.publicKey.toString()}
+    balance: ${this.balance}
+    `;
+  }
 }
