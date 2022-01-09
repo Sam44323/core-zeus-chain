@@ -84,4 +84,12 @@ describe("Test for updating a transaction", () => {
       ).amount
     ).toEqual(wallet.balance - amount - nextAmount);
   });
+
+  it("outputs and amount for the next recipient", () => {
+    expect(
+      transactions.output.find(
+        (output: any) => output.address === nextRecipient
+      ).amount
+    ).toEqual(nextAmount);
+  });
 });
