@@ -75,7 +75,7 @@ class P2PServer {
     socket.on("message", (message: string) => {
       const data = JSON.parse(message); // converting the stringified JSON message to JSON object
       console.log(data);
-      this.blockchain.replaceChain({ chain: data } as any); // replacing the current chain with the new one received from the peers with longer-chains in action
+      this.blockchain.replaceChain({ chain: data } as any); // trying to replace the current chain with the new one received from the peers with longer-chains in action
     });
   }
 
