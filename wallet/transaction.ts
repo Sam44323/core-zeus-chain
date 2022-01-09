@@ -64,6 +64,20 @@ class Transaction {
       signature: senderWallet.signData(ChainUtil.hash(transaction.output)),
     };
   }
+
+  /**
+   * @param dataHash the hashed data
+   * @param publicKey the public key of the sender
+   * method for verifying the transaction
+   */
+
+  static verifyTransaction(
+    dataHash: any,
+    publicKey: any,
+    transaction: Transaction
+  ) {
+    return ChainUtil.verifySignature(publicKey, dataHash, transaction.input);
+  }
 }
 
 export default Transaction;
