@@ -21,6 +21,7 @@ class Wallet {
 
   /**
    * @param dataHash the hash representation of data
+   * @returns the signed data
    */
 
   sign(dataHash: any) {
