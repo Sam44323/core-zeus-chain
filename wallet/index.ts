@@ -18,6 +18,14 @@ class Wallet {
     balance: ${this.balance}
     `;
   }
+
+  /**
+   * @param dataHash the hash representation of some data
+   */
+
+  sign(dataHash: any) {
+    return this.keyPair.sign(dataHash);
+  }
 }
 
 export default Wallet;
