@@ -1,4 +1,5 @@
 import { ec as EC } from "elliptic";
+import { v1 as uuidV1 } from "uuid"; // using v1 for random uuid as it's based on timestamp
 /**
  * Side-Note:
  * sec stands for standards of efficient cryptography
@@ -14,6 +15,10 @@ const ec = new EC("secp256k1"); // using the elliptic cryptography algorithm tha
 class ChainUtil {
   static genKeyPair() {
     return ec.genKeyPair(); // generates a key pair
+  }
+
+  static getUniqueId() {
+    return uuidV1();
   }
 }
 
