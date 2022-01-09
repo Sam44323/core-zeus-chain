@@ -20,7 +20,7 @@ class Wallet {
   }
 
   /**
-   * @param dataHash the hash representation of some data
+   * @param dataHash the hash representation of data
    */
 
   sign(dataHash: any) {
