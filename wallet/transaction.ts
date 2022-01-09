@@ -71,7 +71,7 @@ class Transaction {
     recipientAddress: any,
     amount: number
   ): Transaction | any {
-    // finding the sender's balance after transaction with which will be updated for the new transaction
+    // finding the sender's balance after transaction and updating the amount for the new transaction
     const senderOutput = this.output.find(
       (item: any) => item.address === senderWallet.publicKey
     );

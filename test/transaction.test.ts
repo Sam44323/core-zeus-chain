@@ -54,3 +54,33 @@ describe("Transaction issue checker for test", () => {
     expect(transactions).toEqual(undefined);
   });
 });
+
+describe("Test for updating a transaction", () => {
+  let transactions: Transaction,
+    wallet: any,
+    recipient: any,
+    amount: any,
+    nextAmount: any,
+    nextRecipient: any;
+
+  beforeEach(() => {
+    wallet = new Wallet();
+    amount = 49;
+    recipient = "r3c1p13nt";
+    transactions = Transaction.newTransaction(wallet, recipient, amount);
+    nextAmount = 30;
+    nextRecipient = "next-4dddr35555";
+    transactions = transactions.updateTransaction(
+      wallet,
+      nextRecipient,
+      nextAmount
+    );
+  });
+
+  it("it subtracts the next amount from the sender's output", () => {
+    expect(
+      transactions.output.find((output) => output.address === wallet.publicKey)
+        .amount
+    ).toEqual(wallet.balance - amount - nextAmount);
+  });
+});
