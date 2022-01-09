@@ -20,11 +20,11 @@ class Wallet {
   }
 
   /**
-   * @param dataHash the hash representation of data
+   * @param dataHash the hash representation of some data
    * @returns the signed data
    */
 
-  sign(dataHash: any) {
+  signData(dataHash: any) {
     return this.keyPair.sign(dataHash);
   }
 }
