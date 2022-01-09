@@ -27,12 +27,16 @@ describe("Transaction", () => {
   });
 });
 
-describe("transaction that is exceeding the balance for the user", () => {
+describe("Transaction issue checker for test", () => {
   let transactions: any, wallet: any, recipient: any, amount: any;
   beforeEach(() => {
     wallet = new Wallet();
     amount = 5000;
     recipient = "r3c1p13nt";
     transactions = Transaction.newTransaction(wallet, recipient, amount);
+  });
+
+  it("transaction throws error when the amount is more than the wallet balance for the user", () => {
+    expect(transactions).toEqual(undefined);
   });
 });
