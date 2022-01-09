@@ -70,7 +70,7 @@ class Transaction {
     senderWallet: Wallet,
     recipientAddress: any,
     amount: number
-  ) {
+  ): Transaction | any {
     // finding the sender's balance after transaction with which will be updated for the new transaction
     const senderOutput = this.output.find(
       (item: any) => item.address === senderWallet.publicKey
@@ -83,18 +83,14 @@ class Transaction {
 
     senderOutput.amount = senderOutput.amount - amount;
     // updating a outputs array with the new data for transaction
-    this.output.push(
-      ...[
-        {
-          amount: senderOutput.amount,
-          address: senderWallet.publicKey,
-        },
-        {
-          amount,
-          address: recipientAddress,
-        },
-      ]
-    );
+    this.output.push({
+      amount,
+      address: recipientAddress,
+    });
+
+    Transaction.signTransaction(this, senderWallet);
+
+    return this;
   }
 
   /**
