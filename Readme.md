@@ -69,14 +69,6 @@ yarn
 yarn watch-proj
 ```
 
-### **Running the logger**
-
----
-
-```bash
-yarn dev-test
-```
-
 ### **Running the tests**
 
 ---

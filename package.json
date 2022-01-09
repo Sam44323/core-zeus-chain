@@ -4,7 +4,6 @@
     "name": "@Sam44323"
   },
   "scripts": {
-    "dev-test": "nodemon runner/block-test.ts",
     "watch-proj": "tsc -w",
     "test": "jest --watchAll",
     "serve": "nodemon app/app.ts"
