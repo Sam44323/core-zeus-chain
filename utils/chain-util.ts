@@ -14,19 +14,25 @@ import { SHA256 } from "crypto-js";
 const ec = new EC("secp256k1"); // using the elliptic cryptography algorithm that is used in bitcoin
 
 class ChainUtil {
-  static genKeyPair() {
+  static genKeyPair(): EC.KeyPair {
     return ec.genKeyPair(); // generates a key pair
   }
 
-  static getUniqueId() {
+  static getUniqueId(): string {
     return uuidV1();
   }
 
-  static hash(data: any) {
+  static hash(data: any): string {
     return SHA256(JSON.stringify(data)).toString();
   }
 
-  static verifySignature(publicKey: any, signature: EC.Signature) {}
+  static verifySignature(
+    publicKey: any,
+    signature: EC.Signature,
+    dataHash: any
+  ): boolean {
+    return true;
+  }
 }
 
 export default ChainUtil;
