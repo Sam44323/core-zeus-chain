@@ -13,8 +13,9 @@ describe("Transaction", () => {
 
   it("outputs the `amount` subtracted from the wallet balance from the sender", () => {
     expect(
-      transactions.output.find((output) => output.address === wallet.publicKey)
-        .amount
+      transactions.output.find(
+        (output: any) => output.address === wallet.publicKey
+      ).amount
     ).toEqual(wallet.balance - amount);
   });
 });
