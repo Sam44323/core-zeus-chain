@@ -66,7 +66,6 @@ class Transaction {
   }
 
   /**
-   * @param dataHash the hashed data
    * @param transaction the transaction object
    * method for verifying the transaction
    */
