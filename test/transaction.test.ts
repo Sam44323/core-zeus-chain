@@ -79,8 +79,9 @@ describe("Test for updating a transaction", () => {
 
   it("it subtracts the next amount from the sender's output", () => {
     expect(
-      transactions.output.find((output) => output.address === wallet.publicKey)
-        .amount
+      transactions.output.find(
+        (output: any) => output.address === wallet.publicKey
+      ).amount
     ).toEqual(wallet.balance - amount - nextAmount);
   });
 });
