@@ -69,6 +69,16 @@ yarn
 yarn watch-proj
 ```
 
+### **Running the logger(Optional)**
+
+_Add a custom scripts in package.json with "dev-test" before that_
+
+---
+
+```bash
+yarn dev-test
+```
+
 ### **Running the tests**
 
 ---
