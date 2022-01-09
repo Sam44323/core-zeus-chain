@@ -26,6 +26,9 @@ class Transaction {
   }
 
   /**
+   * @senderWallet is the wallet that is sending the money
+   * @recipientAddress is the wallet that is receiving the money
+   * @amount is the amount of money that is being sent
    * method that gives the users the ability to create a transaction
    */
   static newTransaction(
@@ -55,6 +58,19 @@ class Transaction {
 
     return transaction;
   }
+
+  /**
+   * @senderWallet is the wallet that is sending the money
+   * @recipientAddress is the wallet that is receiving the money
+   * @amount is the amount of money that is being sent
+   * method that gives the users the ability to update a transaction
+   */
+
+  static updateTransaction(
+    senderWallet: Wallet,
+    recipientAddress: any,
+    amount: number
+  ) {}
 
   /**
    *
