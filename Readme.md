@@ -71,7 +71,7 @@ yarn watch-proj
 
 ### **Running the logger(Optional)**
 
-_note: Add a custom scripts in package.json with "dev-test" before that_
+_note: Add a custom scripts in package.json with "dev-test" with nodemon runner before that_
 
 ---
 
