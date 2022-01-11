@@ -18,4 +18,13 @@ describe("Test for transaction-pool", () => {
       transactionPool.transactions.find((t) => t.id === transaction.id)
     ).toEqual(transaction);
   });
+
+  it("updates a valid transaction in the pool", () => {
+    const updatedTransaction = transactionPool.transactions[0];
+    updatedTransaction.updateTransaction(wallet, "r3c1p13nt", 100);
+    transactionPool.updateOrAddTransaction(updatedTransaction);
+    expect(
+      transactionPool.transactions.find((t) => t.id === updatedTransaction.id)
+    ).toEqual(updatedTransaction);
+  });
 });
