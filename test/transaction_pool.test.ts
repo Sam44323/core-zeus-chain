@@ -4,9 +4,11 @@ import Wallet from "../wallet/index";
 
 describe("Test for transaction-pool", () => {
   let transactionPool: TransactionPool,
-    transactions: Transaction,
+    transaction: Transaction,
     wallet: Wallet,
-    recipient: string,
-    amount: number;
-  beforeEach(() => {});
+  beforeEach(() => {
+    transactionPool = new TransactionPool();
+    wallet = new Wallet();
+    transaction = Transaction.newTransaction(wallet, "r3c1p13nt", 49);
+  });
 });
