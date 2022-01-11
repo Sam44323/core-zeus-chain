@@ -19,8 +19,10 @@ class TransactionPool {
     if (transactionWithId) {
       this.transactions[this.transactions.indexOf(transactionWithId)] =
         transaction;
+      console.log(`Updated the transaction with id: ${transaction.id}`);
     } else {
       this.transactions.push(transaction);
+      console.log(`Added the transaction with id: ${transaction.id}`);
     }
   }
 }
