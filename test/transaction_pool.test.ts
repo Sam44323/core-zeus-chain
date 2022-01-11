@@ -12,4 +12,10 @@ describe("Test for transaction-pool", () => {
     transaction = Transaction.newTransaction(wallet, "r3c1p13nt", 49);
     transactionPool.updateOrAddTransaction(transaction);
   });
+
+  it("adds a valid transaction to the pool", () => {
+    expect(
+      transactionPool.transactions.find((t) => t.id === transaction.id)
+    ).toEqual(transaction);
+  });
 });
