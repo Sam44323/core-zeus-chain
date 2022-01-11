@@ -2,3 +2,4 @@ node_modules
 ..gpg
 .gpg
 dist
+.vscode
