@@ -20,12 +20,17 @@ describe("Test for transaction-pool", () => {
   });
 
   it("updates a valid transaction in the pool", () => {
-    let updatedTransaction = transactionPool.transactions[0];
-    transactionPool.updateOrAddTransaction(
-      updatedTransaction.updateTransaction(wallet, "r3c1p13nt", 100)
+    const oldTransaction = JSON.stringify(transactionPool.transactions[0]);
+    const newTransaction = transaction.updateTransaction(
+      wallet,
+      "r3c1p13nt",
+      100
     );
+    transactionPool.updateOrAddTransaction(newTransaction);
     expect(
-      transactionPool.transactions.find((t) => t.id === updatedTransaction.id)
-    ).toEqual(updatedTransaction);
+      JSON.stringify(
+        transactionPool.transactions.find((t) => t.id === newTransaction.id)
+      )
+    ).not.toEqual(oldTransaction);
   });
 });
