@@ -25,6 +25,16 @@ class TransactionPool {
       console.log(`Added the transaction with id: ${transaction.id}`);
     }
   }
+
+  /**
+   *
+   * @param address the address of the wallet for transaction
+   * checks for a transaction in the transaction pool and returns the transaction if exists
+   */
+
+  existingTransaction(address: string): Transaction | null {
+    return null;
+  }
 }
 
 export default TransactionPool;

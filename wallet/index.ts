@@ -1,6 +1,7 @@
 import ChainUtil, { EC } from "../utils/chain-util";
 import { INITIAL_BALANCE } from "../utils/constants";
 import TransactionPool from "./transaction_pool";
+import Transaction from "./transaction";
 
 class Wallet {
   public balance: number;
@@ -40,7 +41,24 @@ class Wallet {
     recipient: string,
     amount: number,
     transactionPool: TransactionPool
-  ) {}
+  ) {
+    if (amount > this.balance) {
+      console.log(
+        `Amount ${amount} exceeds the current wallet balance of ${this.balance}`
+      );
+      return;
+    }
+    let transaction: Transaction | null = transactionPool.existingTransaction(
+      this.publicKey
+    );
+
+    if (transaction) {
+      transaction.updateTransaction(this, recipient, amount);
+    } else {
+      transaction = Transaction.newTransaction(this, recipient, amount);
+      transactionPool.updateOrAddTransaction(transaction!);
+    }
+  }
 }
 
 export default Wallet;
