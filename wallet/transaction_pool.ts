@@ -32,8 +32,10 @@ class TransactionPool {
    * checks for a transaction in the transaction pool and returns the transaction if exists
    */
 
-  existingTransaction(address: string): Transaction | null {
-    return null;
+  existingTransaction(address: string): Transaction | undefined {
+    return this.transactions.find(
+      (transaction: Transaction) => transaction.input.address === address
+    );
   }
 }
 

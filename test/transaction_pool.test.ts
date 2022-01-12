@@ -26,6 +26,7 @@ describe("Test for transaction-pool", () => {
       "r3c1p13nt",
       100
     );
+
     transactionPool.updateOrAddTransaction(newTransaction);
     expect(
       JSON.stringify(

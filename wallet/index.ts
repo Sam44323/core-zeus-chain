@@ -48,16 +48,21 @@ class Wallet {
       );
       return;
     }
-    let transaction: Transaction | null = transactionPool.existingTransaction(
-      this.publicKey
-    );
+    let transaction: Transaction | undefined =
+      transactionPool.existingTransaction(this.publicKey);
 
     if (transaction) {
-      transaction.updateTransaction(this, recipient, amount);
+      /**
+       * as transaction pool stores the reference of the transaction, we are not calling updateOrAddTransaction here cause, it updates the transaction using call-by-reference
+       */
+      transaction = transaction.updateTransaction(this, recipient, amount);
+      transactionPool.updateOrAddTransaction(transaction!);
     } else {
       transaction = Transaction.newTransaction(this, recipient, amount);
       transactionPool.updateOrAddTransaction(transaction!);
     }
+
+    return transaction;
   }
 }
 
