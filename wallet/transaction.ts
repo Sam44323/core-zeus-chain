@@ -11,7 +11,7 @@ class Transaction {
         address: string;
         signature: any;
       }; // consists the signature for the transactions
-  private output: any;
+  public output: any;
 
   /**
    * output-array:

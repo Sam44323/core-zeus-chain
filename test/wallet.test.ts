@@ -25,4 +25,13 @@ describe("Test for wallet", () => {
       )
     ).toEqual(JSON.stringify(transaction));
   });
+
+  it("doubles the `sendAmount` subtracted from the balance of the wallet", () => {
+    wallet.createTransaction(recipient, amount, transactionPool);
+    expect(
+      transactionPool.transactions
+        .find((t: Transaction) => t.id === transaction.id)
+        .output.find((o: any) => o.address === wallet.publicKey).amount
+    ).toEqual(wallet.balance - amount * 2);
+  });
 });
