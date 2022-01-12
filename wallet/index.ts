@@ -1,5 +1,6 @@
 import ChainUtil, { EC } from "../utils/chain-util";
 import { INITIAL_BALANCE } from "../utils/constants";
+import TransactionPool from "./transaction_pool";
 
 class Wallet {
   public balance: number;
@@ -27,6 +28,19 @@ class Wallet {
   signData(dataHash: any) {
     return this.keyPair.sign(dataHash);
   }
+
+  /**
+   *
+   * @param recipient the recipient of the transaction
+   * @param amount the amount of the transaction
+   * @param transactionPool the transaction pool instance
+   */
+
+  createTransaction(
+    recipient: string,
+    amount: number,
+    transactionPool: TransactionPool
+  ) {}
 }
 
 export default Wallet;
