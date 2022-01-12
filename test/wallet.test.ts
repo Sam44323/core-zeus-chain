@@ -32,4 +32,11 @@ describe("Test for wallet", () => {
       transaction.output.find((o: any) => o.address === wallet.publicKey).amount
     ).toEqual(wallet.balance - amount * 2);
   });
+
+  it("clones the `sendAmount` output for the recipient", () => {
+    wallet.createTransaction(recipient, amount, transactionPool);
+    expect(
+      transaction.output.filter((o) => o.address === recipient).length
+    ).toEqual(2);
+  });
 });
