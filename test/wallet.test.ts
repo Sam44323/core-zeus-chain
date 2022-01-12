@@ -1,5 +1,9 @@
 import Wallet from "../wallet/index";
-import Transaction from "../wallet/transaction";
 import TransactionPool from "../wallet/transaction_pool";
 
-describe("Test for wallet", () => {});
+describe("Test for wallet", () => {
+  let wallet: Wallet, transactionPool: TransactionPool;
+  beforeEach(() => {
+    wallet = new Wallet();
+  });
+});
