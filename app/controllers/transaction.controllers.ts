@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { transactionPool } from "../utils/block-initializer";
+import Transaction from "../../wallet/transaction";
+import { transactionPool, wallet } from "../utils/block-initializer";
 
 /**
  * @param req request
@@ -20,4 +21,15 @@ export const getTransactionsFromPool = async (req: Request, res: Response) => {
  * It creates a new transaction and adds it to the transaction pool
  */
 
-export const createTransaction = async (req: Request, res: Response) => {};
+export const createTransaction = async (req: Request, res: Response) => {
+  const { amount, recipient } = req.body;
+  const transaction: Transaction = wallet.createTransaction(
+    recipient,
+    amount,
+    transactionPool
+  )!;
+  res.status(201).json({
+    message: "Transaction created successfully!",
+    data: transaction,
+  });
+};
