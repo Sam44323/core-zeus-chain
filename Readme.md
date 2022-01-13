@@ -31,7 +31,7 @@ _This repo contains core zeus chain code_
 - Reward for mining for miners
 - Multi-Chain Validation
 - WSS support
-- Wallet creation and transaction signing with native token
+- Wallet creation and transaction signing
 
 ---
 
