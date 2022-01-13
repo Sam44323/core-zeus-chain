@@ -1,6 +1,7 @@
 import WebSocket from "ws";
 import dotenv from "dotenv";
 import Blockchain from "../core/blockchain";
+import TransactionPool from "../wallet/transaction_pool";
 
 /**
  * The main idea for this peer-to-peer server is:
@@ -23,9 +24,11 @@ const peers: String[] = process.env.PEERS ? process.env.PEERS.split(",") : [];
 
 class P2PServer {
   public blockchain: Blockchain;
+  public transactionPool: TransactionPool;
   public sockets: any;
-  constructor(blockchain: Blockchain) {
+  constructor(blockchain: Blockchain, transactionPool: TransactionPool) {
     this.blockchain = blockchain; // the own blockchain copy for the peer
+    this.transactionPool = transactionPool; // the own transaction pool copy for the peer
     this.sockets = []; // list of sockets servers that end up connecting to this peer
   }
 

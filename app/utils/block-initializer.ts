@@ -12,7 +12,7 @@ const chainInitializer = () => {
   zeusBlockchain = new Blockchain();
   wallet = new Wallet(); // creating a new wallet for the node
   transactionPool = new TransactionPool();
-  p2pServer = new P2PServer(zeusBlockchain);
+  p2pServer = new P2PServer(zeusBlockchain, transactionPool);
   p2pServer.listen();
 };
 
