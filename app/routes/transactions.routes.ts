@@ -7,6 +7,6 @@ import {
 const transactionRoutes = Router();
 
 transactionRoutes.get("/getTransactions", getTransactionsFromPool);
-transactionRoutes.get("/createTransaction", createTransaction);
+transactionRoutes.post("/createTransaction", createTransaction);
 
 export default transactionRoutes;
