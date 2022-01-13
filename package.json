@@ -6,7 +6,8 @@
   "scripts": {
     "watch-proj": "tsc -w",
     "test": "jest --watchAll",
-    "serve": "nodemon app/app.ts"
+    "serve": "nodemon app/app.ts",
+    "doc": "jsdoc -c jsdoc.json"
   },
   "jest": {
     "testEnvironment": "node"
@@ -39,6 +40,7 @@
     "@types/ws": "^8.2.2",
     "babel-jest": "^27.4.5",
     "jest": "^27.4.5",
+    "jsdoc": "^3.6.7",
     "nodemon": "^2.0.15"
   }
 }

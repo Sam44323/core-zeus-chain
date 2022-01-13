@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: peer-2-peer-server/p2pserver.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: peer-2-peer-server/p2pserver.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+var __importDefault = (this &amp;&amp; this.__importDefault) || function (mod) {
+    return (mod &amp;&amp; mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const ws_1 = __importDefault(require("ws"));
+const dotenv_1 = __importDefault(require("dotenv"));
+/**
+ * The main idea for this peer-to-peer server is:
+ * - Connecting to an existing peer socket
+ * - If no peer socket is found, create a new one
+ */
+dotenv_1.default.config({
+    path: ".env",
+});
+const P2P_PORT = parseInt(process.env.P2P_PORT) || 5001;
+/**
+ * string list of peers servers that can be connected. If the PEERS env exists, use it
+ * else initialize with an empty array
+ *
+ * example of the PEERS env: 'ws://localhost:5001,ws://localhost:5002,ws://localhost:5003'
+ */
+const peers = process.env.PEERS ? process.env.PEERS.split(",") : [];
+class P2PServer {
+    blockchain;
+    sockets;
+    constructor(blockchain) {
+        this.blockchain = blockchain; // the own blockchain copy for the peer
+        this.sockets = []; // list of sockets servers that end up connecting to this peer
+    }
+    /**
+     * method for listening for a new server connection to this peer
+     */
+    listen() {
+        const wServer = new ws_1.default.Server({ port: P2P_PORT }); // creating a new server instance for the peer
+        wServer.on("connection", (socket) => this.connectSocket(socket));
+        this.connectToPeers(); // running this method to connect to the active peers if any
+        console.log(`Listening for the peer-to-peer connections on: ${P2P_PORT}`);
+    }
+    /**
+     * method for connecting the current peers to the available socket-connection for another peer
+     */
+    connectToPeers() {
+        // connecting to all the listed peers active in the PEERS env
+        peers.forEach((peer) => {
+            // example of peers: ws://localhost:5001
+            const socket = new ws_1.default(peer); // creating a new socket object based on the peer-socket address
+            // we are using open to have the assurance that even if the peers is not open specified port, we can still connect to it when it is open
+            socket.on("open", () => this.connectSocket(socket));
+        });
+    }
+    /**
+     * @param socket the socket add to the socket list
+     * method for adding a new connected peer to the socket-list
+     */
+    connectSocket(socket) {
+        this.sockets.push(socket); // add the socket-url for the peer to the list of sockets
+        console.log(`Socket connected`);
+        this.messageHandler(socket); // running the message handler method for the socket to subscribe to the message
+        this.sendChain(socket);
+    }
+    // for handling cross peers communication in the blockchain
+    messageHandler(socket) {
+        socket.on("message", (message) => {
+            const data = JSON.parse(message); // converting the stringified JSON message to JSON object
+            console.log(data);
+            this.blockchain.replaceChain({ chain: data }); // trying to replace the current chain with the new one received from the peers with longer-chain in action
+        });
+    }
+    /**
+     * util method for sending a message with chain data for current peer to all the peers
+     * @param socket the socket to which the message is sent
+     */
+    sendChain(socket) {
+        socket.send(JSON.stringify(this.blockchain.chain)); // sending the blockchain to the peers from other peers
+    }
+    /**
+     * method for sending a message to all the peers to sync then the chain for the entire blockchain
+     */
+    syncChains() {
+        this.sockets.forEach((socket) => this.sendChain(socket));
+    }
+}
+exports.default = P2PServer;
+//# sourceMappingURL=p2pserver.js.map</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Blockchain.html">Blockchain</a></li><li><a href="Transaction.html">Transaction</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addBlockData">addBlockData</a></li><li><a href="global.html#createTransaction">createTransaction</a></li><li><a href="global.html#ec">ec</a></li><li><a href="global.html#getBlockData">getBlockData</a></li><li><a href="global.html#getTransactionsFromPool">getTransactionsFromPool</a></li><li><a href="global.html#peers">peers</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jan 13 2022 19:45:59 GMT+0530 (India Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

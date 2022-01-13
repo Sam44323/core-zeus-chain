@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: wallet/transaction.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: wallet/transaction.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+var __importDefault = (this &amp;&amp; this.__importDefault) || function (mod) {
+    return (mod &amp;&amp; mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const chain_util_1 = __importDefault(require("../utils/chain-util"));
+class Transaction {
+    id = "";
+    input; // consists the signature for the transactions
+    output;
+    /**
+     * output-array:
+     * index[0]: contains the balance the sender will have after the transaction with the recipient is completed
+     * index[1]: contains the amount of money the sender wants to send to the recipient
+     */
+    constructor() {
+        this.id = chain_util_1.default.getUniqueId();
+        this.input = null;
+        this.output = [];
+    }
+    /**
+     * @senderWallet is the wallet that is sending the money
+     * @recipientAddress is the wallet that is receiving the money
+     * @amount is the amount of money that is being sent
+     * method that gives the users the ability to create a transaction
+     */
+    static newTransaction(senderWallet, recipientAddress, amount) {
+        if (amount > senderWallet.balance) {
+            console.log(`Amount: ${amount} exceeds balance`);
+            return;
+        }
+        const transaction = new this();
+        transaction.output.push(...[
+            {
+                amount: senderWallet.balance - amount,
+                address: senderWallet.publicKey,
+            },
+            {
+                amount,
+                address: recipientAddress,
+            },
+        ]);
+        Transaction.signTransaction(transaction, senderWallet);
+        return transaction;
+    }
+    /**
+     * @senderWallet is the wallet that is sending the money
+     * @recipientAddress is the wallet that is receiving the money
+     * @amount is the amount of money that is being sent
+     * method that gives the users the ability to update a transaction
+     */
+    updateTransaction(senderWallet, recipientAddress, amount) {
+        // finding the sender's balance after transaction and updating the amount for the new transaction
+        const senderOutput = this.output.find((item) => item.address === senderWallet.publicKey);
+        if (amount > senderOutput.amount) {
+            console.log(`Amount: ${amount} exceeds balance`);
+            return;
+        }
+        senderOutput.amount = senderOutput.amount - amount;
+        // updating a outputs array with the new data for transaction
+        this.output.push({
+            amount,
+            address: recipientAddress,
+        });
+        Transaction.signTransaction(this, senderWallet);
+        return this;
+    }
+    /**
+     *
+     * @param transaction the transaction object
+     * @param senderWallet the wallet of the sender
+     * stores the input setter in the transaction object with the listed data
+     */
+    static signTransaction(transaction, senderWallet) {
+        transaction.input = {
+            timestamp: Date.now(),
+            amount: senderWallet.balance,
+            address: senderWallet.publicKey,
+            signature: senderWallet.signData(chain_util_1.default.hash(transaction.output)),
+        };
+    }
+    /**
+     * @param transaction the transaction object
+     * method for verifying the transaction
+     */
+    static verifyTransaction(transaction) {
+        return chain_util_1.default.verifySignature(transaction.input.address, transaction.input.signature, chain_util_1.default.hash(transaction.output));
+    }
+}
+exports.default = Transaction;
+//# sourceMappingURL=transaction.js.map</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Blockchain.html">Blockchain</a></li><li><a href="Transaction.html">Transaction</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addBlockData">addBlockData</a></li><li><a href="global.html#createTransaction">createTransaction</a></li><li><a href="global.html#ec">ec</a></li><li><a href="global.html#getBlockData">getBlockData</a></li><li><a href="global.html#getTransactionsFromPool">getTransactionsFromPool</a></li><li><a href="global.html#peers">peers</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jan 13 2022 19:45:59 GMT+0530 (India Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

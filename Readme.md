@@ -10,6 +10,8 @@
 ![Jest](https://img.shields.io/badge/-Jest-333333?style=for-the-badge&logo=jest&logoColor=61dbfb)
 ![Socket.IO](https://img.shields.io/badge/-Socket.IO-333333?style=for-the-badge&logo=socket.io&logoColor=61dbfb)
 ![Elliptic](https://img.shields.io/badge/-Elliptic-333333?style=for-the-badge&logo=Elliptic.JS&logoColor=61dbfb)
+![JsDOC](https://img.shields.io/badge/-JSDOC-333333?style=for-the-badge&logo=jsdoc&logoColor=61dbfb)
+![Winston](https://img.shields.io/badge/-Winston-333333?style=for-the-badge&logo=winston&logoColor=61dbfb)
 
 ---
 
@@ -42,6 +44,7 @@ _This repo contains core zeus chain code_
 - Nodemon
 - Elliptic
 - Winston(for logger)
+- JSDOC
 - UUID
 - Socket.IO
 - Cors
@@ -86,6 +89,16 @@ yarn dev-test
 
 ```bash
 yarn test
+```
+
+---
+
+### **Generating a documentation**
+
+---
+
+```bash
+yarn doc
 ```
 
 ---
