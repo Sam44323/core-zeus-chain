@@ -20,7 +20,7 @@ _This repo contains core zeus chain code_
 # Features
 
 - Core Blockchain Implementation
-- POW methodifier
+- POW methods
 - New block generation
 - Support for test-chain
 - Blockchain API support
