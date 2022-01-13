@@ -12,7 +12,7 @@ var transport = new winston.transports.DailyRotateFile({
 transport.on("rotate", function (oldFilename: any, newFilename: any) {});
 
 var logger = winston.createLogger({
-  transports: [transport],
+  transports: [transport, new winston.transports.Console()],
 });
 
 export default logger;

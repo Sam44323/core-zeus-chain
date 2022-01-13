@@ -20,20 +20,18 @@ class TransactionPool {
     if (transactionWithId) {
       this.transactions[this.transactions.indexOf(transactionWithId)] =
         transaction;
-      logger.info(`
-           Time [${new Date().toLocaleString()}]
-           [ACTION]
-           [Transaction-Pool]
-           [Transaction creation]
-          ✅ Updated the transaction with id: ${transaction.id}`);
+      logger.info(
+        `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction creation] ✅ Updated the transaction with id: ${
+          transaction.id
+        }`
+      );
     } else {
       this.transactions.push(transaction);
-      logger.info(`
-           Time [${new Date().toLocaleString()}]
-           [ACTION]
-           [Transaction-Pool]
-           [Transaction update]
-          ✅ Added the transaction with id: ${transaction.id}`);
+      logger.info(
+        `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction update]  ✅ Added the transaction with id: ${
+          transaction.id
+        }`
+      );
     }
   }
 
