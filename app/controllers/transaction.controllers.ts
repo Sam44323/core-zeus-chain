@@ -12,6 +12,7 @@ export const getTransactionsFromPool = async (req: Request, res: Response) => {
   res.status(200).json({
     message: "Here are the transactions!",
     data: transactionPool.transactions,
+    totalTransactions: transactionPool.transactions.length,
   });
 };
 
