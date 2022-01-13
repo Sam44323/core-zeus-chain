@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import Blockchain from "../core/blockchain";
 import TransactionPool from "../wallet/transaction_pool";
 import Transaction from "../wallet/transaction";
+import { MESSAGE_OPTION_TYPES, MESSAGE_OPTION } from "../utils/types";
 
 /**
  * The main idea for this peer-to-peer server is:
@@ -15,6 +16,7 @@ dotenv.config({
 });
 
 const P2P_PORT: number = parseInt(process.env.P2P_PORT!) || 5001;
+
 /**
  * string list of peers servers that can be connected. If the PEERS env exists, use it
  * else initialize with an empty array
@@ -77,9 +79,10 @@ class P2PServer {
 
   messageHandler(socket: WebSocket) {
     socket.on("message", (message: string) => {
-      const data: any = JSON.parse(message); // converting the stringified JSON message to JSON object
+      const data: { type: MESSAGE_OPTION_TYPES; data: any } =
+        JSON.parse(message); // converting the stringified JSON message to JSON object
       console.log(data);
-      if (data.type === "Chain") {
+      if (data.type === MESSAGE_OPTION.chain) {
         this.blockchain.replaceChain({ chain: data } as any); // trying to replace the current chain with the new one received from the peers with longer-chain in action
       } else {
         this.transactionPool.updateOrAddTransaction(data.data); // updating the transaction pool with the new transaction received from the peers
@@ -93,7 +96,12 @@ class P2PServer {
    */
 
   sendChain(socket: WebSocket) {
-    socket.send(JSON.stringify({ type: "Chain", data: this.blockchain.chain })); // sending the blockchain to the peers from other peers
+    socket.send(
+      JSON.stringify({
+        type: MESSAGE_OPTION.chain,
+        data: this.blockchain.chain,
+      })
+    ); // sending the blockchain to the peers from other peers
   }
 
   /**
@@ -112,7 +120,9 @@ class P2PServer {
    */
 
   sendTransaction(socket: WebSocket, transaction: Transaction) {
-    socket.send(JSON.stringify({ type: "Transaction", data: transaction }));
+    socket.send(
+      JSON.stringify({ type: MESSAGE_OPTION.transaction, data: transaction })
+    );
   }
 
   /**

@@ -1,0 +1,9 @@
+export type MESSAGE_OPTION_TYPES = "CHAIN" | "TRANSACTION";
+export interface MESSAGE_OPTION_INTERFACE {
+  chain: MESSAGE_OPTION_TYPES;
+  transaction: MESSAGE_OPTION_TYPES;
+}
+export const MESSAGE_OPTION: MESSAGE_OPTION_INTERFACE = {
+  chain: "CHAIN",
+  transaction: "TRANSACTION",
+};
