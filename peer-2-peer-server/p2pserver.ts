@@ -79,7 +79,11 @@ class P2PServer {
     socket.on("message", (message: string) => {
       const data = JSON.parse(message); // converting the stringified JSON message to JSON object
       console.log(data);
-      this.blockchain.replaceChain({ chain: data } as any); // trying to replace the current chain with the new one received from the peers with longer-chain in action
+      if (data.type === "Chain") {
+        this.blockchain.replaceChain({ chain: data } as any); // trying to replace the current chain with the new one received from the peers with longer-chain in action
+      } else {
+        this.transactionPool.updateOrAddTransaction(data.data); // updating the transaction pool with the new transaction received from the peers
+      }
     });
   }
 
@@ -89,7 +93,7 @@ class P2PServer {
    */
 
   sendChain(socket: WebSocket) {
-    socket.send(JSON.stringify(this.blockchain.chain)); // sending the blockchain to the peers from other peers
+    socket.send(JSON.stringify({ type: "Chain", data: this.blockchain.chain })); // sending the blockchain to the peers from other peers
   }
 
   /**
@@ -108,7 +112,7 @@ class P2PServer {
    */
 
   sendTransaction(socket: WebSocket, transaction: Transaction) {
-    socket.send(JSON.stringify(transaction));
+    socket.send(JSON.stringify({ type: "Transaction", data: transaction }));
   }
 
   /**
