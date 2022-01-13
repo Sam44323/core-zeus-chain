@@ -21,14 +21,14 @@ class TransactionPool {
       this.transactions[this.transactions.indexOf(transactionWithId)] =
         transaction;
       logger.info(
-        `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction creation] ✅ Updated the transaction with id: ${
+        `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction update] ✅ Updated the transaction with id: ${
           transaction.id
         }`
       );
     } else {
       this.transactions.push(transaction);
       logger.info(
-        `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction update]  ✅ Added the transaction with id: ${
+        `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction created]  ✅ Added the transaction with id: ${
           transaction.id
         }`
       );
