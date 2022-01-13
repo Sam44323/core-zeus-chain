@@ -1,5 +1,15 @@
+# Packages
 node_modules
+
+# Signer
 ..gpg
 .gpg
+
+# Build
 dist
+
+# IDE
 .vscode
+
+# MISC
+*.log
