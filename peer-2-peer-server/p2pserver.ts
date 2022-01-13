@@ -2,6 +2,7 @@ import WebSocket from "ws";
 import dotenv from "dotenv";
 import Blockchain from "../core/blockchain";
 import TransactionPool from "../wallet/transaction_pool";
+import Transaction from "../wallet/transaction";
 
 /**
  * The main idea for this peer-to-peer server is:
@@ -97,6 +98,29 @@ class P2PServer {
 
   syncChains() {
     this.sockets.forEach((socket: WebSocket) => this.sendChain(socket));
+  }
+
+  /**
+   *
+   * @param socket the socket to which the transaction is sent
+   * @param transaction the transaction to be sent
+   * method for sending the newly added transaction to the peers
+   */
+
+  sendTransaction(socket: WebSocket, transaction: Transaction) {
+    socket.send(JSON.stringify(transaction));
+  }
+
+  /**
+   *
+   * @param transaction the transaction to be added to the peers
+   * method for broadcasting a new transaction to the peers by calling the sendTransaction method
+   */
+
+  broadcastTransaction(transaction: Transaction) {
+    this.sockets.forEach((socket: WebSocket) =>
+      this.sendTransaction(socket, transaction)
+    );
   }
 }
 
