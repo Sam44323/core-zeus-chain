@@ -1,4 +1,5 @@
 import Transaction from "./transaction";
+import logger from "../app/helper/winston_config";
 
 class TransactionPool {
   public transactions: Transaction[] = []; // contains the list of unconfirmed transactions
@@ -19,10 +20,20 @@ class TransactionPool {
     if (transactionWithId) {
       this.transactions[this.transactions.indexOf(transactionWithId)] =
         transaction;
-      console.log(`Updated the transaction with id: ${transaction.id}`);
+      logger.info(`
+           Time [${new Date().toLocaleString()}]
+           [ACTION]
+           [Transaction-Pool]
+           [Transaction creation]
+          ✅ Updated the transaction with id: ${transaction.id}`);
     } else {
       this.transactions.push(transaction);
-      console.log(`Added the transaction with id: ${transaction.id}`);
+      logger.info(`
+           Time [${new Date().toLocaleString()}]
+           [ACTION]
+           [Transaction-Pool]
+           [Transaction creation]
+          ✅ Added the transaction with id: ${transaction.id}`);
     }
   }
 

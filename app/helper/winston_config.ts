@@ -9,12 +9,10 @@ var transport = new winston.transports.DailyRotateFile({
   maxFiles: "4d",
 });
 
-transport.on("rotate", function (oldFilename: any, newFilename: any) {
-  // do something fun
-});
+transport.on("rotate", function (oldFilename: any, newFilename: any) {});
 
 var logger = winston.createLogger({
   transports: [transport],
 });
 
-logger.info("Hello World!");
+export default logger;
