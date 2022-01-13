@@ -32,7 +32,7 @@ class TransactionPool {
            Time [${new Date().toLocaleString()}]
            [ACTION]
            [Transaction-Pool]
-           [Transaction creation]
+           [Transaction update]
           ✅ Added the transaction with id: ${transaction.id}`);
     }
   }
