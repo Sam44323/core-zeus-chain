@@ -13,3 +13,11 @@ export const getTransactionsFromPool = async (req: Request, res: Response) => {
     data: transactionPool.transactions,
   });
 };
+
+/**
+ * @param req request
+ * @param res response
+ * It creates a new transaction and adds it to the transaction pool
+ */
+
+export const createTransaction = async (req: Request, res: Response) => {};
