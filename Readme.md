@@ -43,7 +43,7 @@ _This repo contains core zeus chain code_
 - Crypto-JS
 - Nodemon
 - Elliptic
-- Winston(for logger)
+- Winston
 - JSDOC
 - UUID
 - Socket.IO
