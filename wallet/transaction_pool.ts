@@ -50,7 +50,11 @@ class TransactionPool {
   /**
    * Method for validating the transactions in the pool and returns the valid transactions to the caller
    */
-  validTransactions() {}
+  validTransactions() {
+    /**
+     * @todo: logic for validation the transactions in the pool and returning the valid transactions
+     */
+  }
 }
 
 export default TransactionPool;

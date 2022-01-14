@@ -25,7 +25,28 @@ class Miner {
    * Method that will take transactions from the transaction pool and mine a block and then broadcast it to the network using the p2p server and then clear the transaction pool
    */
   mint() {
+    // miner will be getting the valid transactions from the transaction pool
     const validTransactions = this.transactionPool.validTransactions();
+
+    /**
+     * @todo: add logic for include a reward for the miner
+     */
+
+    /**
+     * @todo: creating a block with the valid transactions
+     */
+
+    /**
+     * @todo: synchronize the blockchain with the p2p-network
+     */
+
+    /**
+     * @todo: clear the transaction pool local to this miner
+     */
+
+    /**
+     * @todo: broadcast to every miner in the network to clear their transaction pools
+     */
   }
 }
 
