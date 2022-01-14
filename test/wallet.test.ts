@@ -36,7 +36,7 @@ describe("Test for wallet", () => {
   it("clones the `sendAmount` output for the recipient", () => {
     wallet.createTransaction(recipient, amount, transactionPool);
     expect(
-      transaction.output.filter((o) => o.address === recipient).length
+      transaction.output.filter((o: any) => o.address === recipient).length
     ).toEqual(2);
   });
 });
