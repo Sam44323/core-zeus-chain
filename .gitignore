@@ -13,3 +13,4 @@ dist
 
 # MISC
 *.log
+*-audit.json
