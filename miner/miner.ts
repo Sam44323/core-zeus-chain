@@ -14,7 +14,7 @@ class Miner {
   ) {
     this.transactionPool = transactionPool;
     this.blockchain = blockchain;
-    this.wallet = Wallet;
+    this.wallet = wallet;
   }
 }
 
