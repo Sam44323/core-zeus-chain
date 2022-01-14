@@ -20,6 +20,13 @@ class Miner {
     this.wallet = wallet;
     this.p2pServer = p2pServer;
   }
+
+  /**
+   * Method that will take transactions from the transaction pool and mine a block and then broadcast it to the network using the p2p server and then clear the transaction pool
+   */
+  mint() {
+    const validTransactions = this.transactionPool.validTransactions();
+  }
 }
 
 export default Miner;

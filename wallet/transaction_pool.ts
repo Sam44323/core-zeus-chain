@@ -46,6 +46,11 @@ class TransactionPool {
       (transaction: Transaction) => transaction.input.address === address
     );
   }
+
+  /**
+   * Method for validating the transactions in the pool and returns the valid transactions to the caller
+   */
+  validTransactions() {}
 }
 
 export default TransactionPool;
