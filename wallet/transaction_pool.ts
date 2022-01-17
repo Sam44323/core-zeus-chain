@@ -52,7 +52,7 @@ class TransactionPool {
    */
   validTransactions() {
     /**
-     * @todo: logic for validation the transactions in the pool and returning the valid transactions
+     * @todo: logic for returning the valid transactions
      */
   }
 }
