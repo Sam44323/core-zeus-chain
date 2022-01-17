@@ -62,6 +62,8 @@ class TransactionPool {
         return total + o.amount;
       }, 0);
 
+      // for checking if the total output amount is equal to the input amount(senderWallet amount)
+
       if (totalOutput !== transaction.input.amount) {
         logger.info(
           `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction created]  ❌ INvalid transaction from the address: ${
@@ -70,6 +72,8 @@ class TransactionPool {
         );
         return;
       }
+
+      // checking the signature validation of the transaction
 
       if (!Transaction.verifyTransaction(transaction)) {
         logger.info(
