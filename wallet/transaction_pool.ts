@@ -50,13 +50,38 @@ class TransactionPool {
   /**
    * Method for validating the transactions in the pool and returns the valid transactions to the caller
    */
-  validTransactions(): Transaction[] | [] {
+  validTransactions(): any {
     /**
-     * @todo: logic for returning the valid transactions from pool
+     * @description: We are checking if a transactions is valid or not in following ways:
+     * - Adding all the amount for the output array balance and if it's not equal to the current balance for the input(senderWallet amount), then it's invalid
+     *
+     * - We are also checking if the signature is valid or not by using the verifySignature method in the transaction class
      */
-    return this.transactions.filter((transaction: Transaction) =>
-      Transaction.verifyTransaction(transaction)
-    );
+    return this.transactions.filter((transaction: Transaction) => {
+      const totalOutput = transaction.output.reduce((total: number, o: any) => {
+        return total + o.amount;
+      }, 0);
+
+      if (totalOutput !== transaction.input.amount) {
+        logger.info(
+          `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction created]  ❌ INvalid transaction from the address: ${
+            transaction.input.address
+          }`
+        );
+        return;
+      }
+
+      if (!Transaction.verifyTransaction(transaction)) {
+        logger.info(
+          `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction created]  ❌ Invalid transaction signature from: ${
+            transaction.input.address
+          }`
+        );
+        return;
+      }
+
+      return transaction;
+    });
   }
 }
 
