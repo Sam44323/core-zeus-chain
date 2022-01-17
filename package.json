@@ -6,8 +6,10 @@
   "scripts": {
     "watch-proj": "tsc -w",
     "test": "jest --watchAll",
+    "runner": "ts-node runner/run.ts",
     "serve": "nodemon app/app.ts",
-    "doc": "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json",
+    "watch:change": "onchange  -v -k -i './dist/' -- yarn doc"
   },
   "jest": {
     "testEnvironment": "node"

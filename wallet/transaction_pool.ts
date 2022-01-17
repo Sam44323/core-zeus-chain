@@ -52,7 +52,7 @@ class TransactionPool {
    */
   validTransactions(): Transaction[] | [] {
     /**
-     * @todo: logic for returning the valid transactions
+     * @todo: logic for returning the valid transactions from pool
      */
     return this.transactions.filter((transaction: Transaction) =>
       Transaction.verifyTransaction(transaction)
