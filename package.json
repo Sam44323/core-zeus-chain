@@ -23,6 +23,7 @@
     "dotenv": "^10.0.0",
     "elliptic": "^6.5.4",
     "express": "^4.17.2",
+    "onchange": "^7.1.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4",
     "uuid": "^8.3.2",

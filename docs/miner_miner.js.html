@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: app/controllers/zeusChain.controllers.js</title>
+    <title>JSDoc: Source: miner/miner.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: app/controllers/zeusChain.controllers.js</h1>
+    <h1 class="page-title">Source: miner/miner.js</h1>
 
     
 
@@ -28,43 +28,42 @@
         <article>
             <pre class="prettyprint source linenums"><code>"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addBlockData = exports.getBlockData = void 0;
-const block_initializer_1 = require("../utils/block-initializer");
-/**
- * @param req request
- * @param res response
- * It returns the blockchain data
- */
-const getBlockData = (req, res) => {
-    res.status(200).json({
-        message: "Data for blockchain",
-        data: (0, block_initializer_1.getZeusBlockchain)().chain,
-    });
-};
-exports.getBlockData = getBlockData;
-/**
- * @param req request
- * @param res response
- * adds a new block to the blockchain and returns the new blockchain data
- */
-const addBlockData = (req, res) => {
-    const { data } = req.body;
-    if (!data) {
-        res.status(400).json({
-            message: "Data is required",
-        });
+class Miner {
+    transactionPool; // transactionPool instance for the miner
+    blockchain; // blockchain instance for the miner
+    wallet; // wallet for the miner
+    p2pServer; // reference to the peer-2-peer server
+    constructor(transactionPool, blockchain, wallet, p2pServer) {
+        this.transactionPool = transactionPool;
+        this.blockchain = blockchain;
+        this.wallet = wallet;
+        this.p2pServer = p2pServer;
     }
-    else {
-        (0, block_initializer_1.addNewBlock)(data);
-        block_initializer_1.p2pServer.syncChains(); // syncing the chains for the peers
-        res.status(200).json({
-            message: "Block added",
-            data: (0, block_initializer_1.getZeusBlockchain)().chain,
-        });
+    /**
+     * Method that will take transactions from the transaction pool and mine a block and then broadcast it to the network using the p2p server and then clear the transaction pool
+     */
+    mint() {
+        // miner will be getting the valid transactions from the transaction pool
+        const validTransactions = this.transactionPool.validTransactions();
+        /**
+         * @todo: add logic for include a reward for the miner
+         */
+        /**
+         * @todo: creating a block with the valid transactions
+         */
+        /**
+         * @todo: synchronize the blockchain with the p2p-network
+         */
+        /**
+         * @todo: clear the transaction pool local to this miner
+         */
+        /**
+         * @todo: broadcast to every miner in the network to clear their transaction pools
+         */
     }
-};
-exports.addBlockData = addBlockData;
-//# sourceMappingURL=zeusChain.controllers.js.map</code></pre>
+}
+exports.default = Miner;
+//# sourceMappingURL=miner.js.map</code></pre>
         </article>
     </section>
 
