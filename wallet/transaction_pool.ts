@@ -50,10 +50,13 @@ class TransactionPool {
   /**
    * Method for validating the transactions in the pool and returns the valid transactions to the caller
    */
-  validTransactions() {
+  validTransactions(): Transaction[] | [] {
     /**
      * @todo: logic for returning the valid transactions
      */
+    return this.transactions.filter((transaction: Transaction) =>
+      Transaction.verifyTransaction(transaction)
+    );
   }
 }
 
