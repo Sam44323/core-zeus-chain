@@ -114,7 +114,7 @@ class Transaction {
    * method for verifying the transaction
    */
 
-  static verifyTransaction(transaction: Transaction) {
+  static verifyTransaction(transaction: Transaction): boolean {
     return ChainUtil.verifySignature(
       transaction.input.address,
       transaction.input.signature,
