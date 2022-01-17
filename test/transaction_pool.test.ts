@@ -9,8 +9,7 @@ describe("Test for transaction-pool", () => {
   beforeEach(() => {
     transactionPool = new TransactionPool();
     wallet = new Wallet();
-    transaction = Transaction.newTransaction(wallet, "r3c1p13nt", 49);
-    transactionPool.updateOrAddTransaction(transaction);
+    transaction = wallet.createTransaction("recipient", 10, transactionPool);
   });
 
   it("adds a valid transaction to the pool", () => {
