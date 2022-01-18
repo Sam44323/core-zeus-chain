@@ -53,6 +53,7 @@ class TransactionPool {
   validTransactions(): any {
     /**
      * @description: We are checking if a transactions is valid or not in following ways:
+     *
      * - Adding all the amount for the output array balance and if it's not equal to the current balance for the input(senderWallet amount), then it's invalid
      *
      * - We are also checking if the signature is valid or not by using the verifySignature method in the transaction class
