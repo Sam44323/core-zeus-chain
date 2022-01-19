@@ -27,6 +27,20 @@ class Transaction {
   }
 
   /**
+   * Util method for building a transaction based on the data provided
+   * @param senderWallet the sender wallet for the initiator for the transaction
+   * @param outputs the outputs for the transaction
+   * @returns the transaction with updated data
+   */
+
+  static transactionWithOutputs(senderWallet: Wallet, outputs: any[]) {
+    const transaction = new this();
+    transaction.output = outputs;
+    Transaction.signTransaction(transaction, senderWallet);
+    return transaction;
+  }
+
+  /**
    * @senderWallet is the wallet that is sending the money
    * @recipientAddress is the wallet that is receiving the money
    * @amount is the amount of money that is being sent
