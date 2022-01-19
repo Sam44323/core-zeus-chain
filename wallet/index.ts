@@ -64,6 +64,18 @@ class Wallet {
 
     return transaction;
   }
+
+  /**
+   * Method for creating a blockchain_wallet that will only be one and will be used to send rewards to miners
+   * @returns the blockchain-wallet instance
+   */
+
+  static blockchainWallet() {
+    const blockchainWallet = new this();
+    blockchainWallet.publicKey = "blockchain-wallet"; // changing the wallet address to make sure this is the blockchain_wallet
+
+    return blockchainWallet;
+  }
 }
 
 export default Wallet;
