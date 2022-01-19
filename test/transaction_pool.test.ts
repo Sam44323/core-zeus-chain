@@ -55,5 +55,9 @@ describe("Test for transaction-pool", () => {
         }
       }
     });
+
+    it("shows a difference between valid and corrupt transactions", () => {
+      expect(transactionPool.transactions).not.toEqual(validTransactions);
+    });
   });
 });
