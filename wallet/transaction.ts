@@ -33,7 +33,10 @@ class Transaction {
    * @returns the transaction with updated data
    */
 
-  static transactionWithOutputs(senderWallet: Wallet, outputs: any[]) {
+  static transactionWithOutputs(
+    senderWallet: Wallet,
+    outputs: { amount: number; address: string }[]
+  ) {
     const transaction = new this();
     transaction.output = outputs;
     Transaction.signTransaction(transaction, senderWallet);
@@ -55,9 +58,9 @@ class Transaction {
       console.log(`Amount: ${amount} exceeds balance`);
       return;
     }
-    const transaction: Transaction = new this();
-    transaction.output.push(
-      ...[
+    const transaction: Transaction = Transaction.transactionWithOutputs(
+      senderWallet,
+      [
         {
           amount: senderWallet.balance - amount,
           address: senderWallet.publicKey,
