@@ -33,4 +33,27 @@ describe("Test for transaction-pool", () => {
       )
     ).not.toEqual(oldTransaction);
   });
+
+  describe("mixing corrupt and valid transactions", () => {
+    let validTransactions: Transaction[];
+
+    beforeEach(() => {
+      validTransactions = [...transactionPool.transactions];
+      // making half of the transactions invalid and other half valid
+
+      for (let i = 0; i < 6; i++) {
+        wallet = new Wallet();
+        transaction = wallet.createTransaction(
+          "recipient",
+          10,
+          transactionPool
+        );
+        if (i % 2 === 0) {
+          transaction.input.amount = 999999;
+        } else {
+          validTransactions.push(transaction);
+        }
+      }
+    });
+  });
 });
