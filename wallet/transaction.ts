@@ -78,6 +78,21 @@ class Transaction {
   }
 
   /**
+   * Method for sending reward to the miner
+   * @param minerWallet the miner wallet who will receive the reward
+   * @param blockchainWallet the wallet of the blockchain
+   */
+
+  static rewardTransaction(minerWallet: Wallet, blockchainWallet: Wallet) {
+    return Transaction.transactionWithOutputs(blockchainWallet, [
+      {
+        amount: MINING_REWARD,
+        address: minerWallet.publicKey,
+      },
+    ]);
+  }
+
+  /**
    * @senderWallet is the wallet that is sending the money
    * @recipientAddress is the wallet that is receiving the money
    * @amount is the amount of money that is being sent
