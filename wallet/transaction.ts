@@ -1,3 +1,4 @@
+import { MINING_REWARD } from "../utils/constants";
 import ChainUtil, { EC } from "../utils/chain-util";
 import Wallet from "./index";
 
