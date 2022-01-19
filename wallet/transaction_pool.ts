@@ -63,7 +63,7 @@ class TransactionPool {
         return total + o.amount;
       }, 0);
 
-      // for checking if the total output amount is equal to the input amount(senderWallet amount)
+      // for checking if the total output amount is equal to the input amount(senderWallet amount-value)
 
       if (totalOutput !== transaction.input.amount) {
         logger.info(
