@@ -1,5 +1,6 @@
 import Transaction from "../wallet/transaction";
 import Wallet from "../wallet/index";
+import { MINING_REWARD } from "../utils/constants";
 
 describe("Transaction", () => {
   let transactions: any, wallet: any, recipient: any, amount: any;
@@ -101,5 +102,13 @@ describe("Creating a reward_transaction", () => {
     blockchainWallet = new Wallet();
     minerWallet = new Wallet();
     transaction = Transaction.rewardTransaction(minerWallet, blockchainWallet);
+  });
+
+  it("reward the miner's wallet", () => {
+    expect(
+      transaction.output.find(
+        (output) => output.address === minerWallet.publicKey
+      ).amount
+    ).toEqual(MINING_REWARD);
   });
 });
