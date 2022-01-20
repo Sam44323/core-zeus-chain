@@ -93,3 +93,13 @@ describe("Test for updating a transaction", () => {
     ).toEqual(nextAmount);
   });
 });
+
+describe("Creating a reward_transaction", () => {
+  let blockchainWallet: Wallet, minerWallet: Wallet, transaction: Transaction;
+
+  beforeEach(() => {
+    blockchainWallet = new Wallet();
+    minerWallet = new Wallet();
+    transaction = Transaction.rewardTransaction(minerWallet, blockchainWallet);
+  });
+});
