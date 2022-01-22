@@ -28,8 +28,9 @@ class Miner {
   mint() {
     // miner will be getting the valid transactions from the transaction pool
     const validTransactions = this.transactionPool.validTransactions();
+
     /**
-     * @description: We are pushing the transaction for the miner to the validTransactions array and then we are creating a new block with the valid transactions
+     * @description: We are pushing the reward-transaction for the miner to the validTransactions array and then we are creating a new block with the valid transactions
      */
     validTransactions.push(
       Transaction.rewardTransaction(this.wallet, Wallet.blockchainWallet())
