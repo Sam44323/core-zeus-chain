@@ -64,4 +64,9 @@ describe("Test for transaction-pool", () => {
       expect(transactionPool.validTransactions()).toEqual(validTransactions);
     });
   });
+
+  it("clears the transaction_pool", () => {
+    transactionPool.clearTransactionPool();
+    expect(transactionPool.transactions.length).toEqual(0);
+  });
 });
