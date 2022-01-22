@@ -9,5 +9,7 @@ export const mineBlock = async (_req: Request, res: Response) => {
     `Time [${new Date().toLocaleString()}] [ACTION] [Mine-Controller] [Block-Creation] ✅ Mined a new block
     ${block.toString()}`
   );
-  res.redirect("/blocks/getBlocks");
+  res.status(200).json({
+    message: "Block mined successfully",
+  });
 };
