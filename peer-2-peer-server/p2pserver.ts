@@ -90,6 +90,7 @@ class P2PServer {
           this.transactionPool.updateOrAddTransaction(data.data); // updating the transaction pool with the new transaction received from the peers
           break;
         case MESSAGE_OPTION.clear:
+          this.transactionPool.clearTransactionPool(); // clearing the transaction pool
           break;
         default:
           console.log("Invalid message type");
