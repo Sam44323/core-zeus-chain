@@ -3,6 +3,6 @@ import { mineBlock } from "../controllers/mine.controllers";
 
 const mineRoutes = Router();
 
-mineRoutes.get("/mineBlock", mineBlock);
+mineRoutes.post("/mineBlock", mineBlock);
 
 export default mineRoutes;
