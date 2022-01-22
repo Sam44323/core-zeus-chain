@@ -2,6 +2,7 @@ import TransactionPool from "../wallet/transaction_pool";
 import Blockchain from "../core/blockchain";
 import Wallet from "../wallet";
 import P2PServer from "../peer-2-peer-server/p2pserver";
+import Transaction from "../wallet/transaction";
 
 class Miner {
   public transactionPool: TransactionPool; // transactionPool instance for the miner
@@ -27,7 +28,12 @@ class Miner {
   mint() {
     // miner will be getting the valid transactions from the transaction pool
     const validTransactions = this.transactionPool.validTransactions();
-
+    /**
+     * @description: We are pushing the transaction for the miner to the validTransactions array and then we are creating a new block with the valid transactions
+     */
+    validTransactions.push(
+      Transaction.rewardTransaction(this.wallet, Wallet.blockchainWallet())
+    );
     /**
      * @todo: add logic for include a reward for the miner
      */

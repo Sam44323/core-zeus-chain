@@ -16,7 +16,6 @@ class TransactionPool {
     let transactionWithId = this.transactions.find(
       (t: Transaction) => t.id === transaction.id
     );
-
     if (transactionWithId) {
       this.transactions[this.transactions.indexOf(transactionWithId)] =
         transaction;
@@ -78,10 +77,11 @@ class TransactionPool {
 
       if (!Transaction.verifyTransaction(transaction)) {
         logger.info(
-          `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction created]  ❌ Invalid transaction signature from: ${
+          `Time [${new Date().toLocaleString()}] [ACTION] [Transaction-Pool] [Transaction created]  ❌ Invalid transaction signature from: {$
             transaction.input.address
           }`
         );
+
         return;
       }
 
