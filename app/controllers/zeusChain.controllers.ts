@@ -11,7 +11,7 @@ import {
  * It returns the blockchain data
  */
 
-export const getBlockData = (req: Request, res: Response) => {
+export const getBlockData = (_req: Request, res: Response) => {
   res.status(200).json({
     message: "Data for blockchain",
     data: getZeusBlockchain().chain,
