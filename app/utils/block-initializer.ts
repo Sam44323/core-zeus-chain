@@ -30,4 +30,5 @@ export {
   p2pServer,
   wallet,
   transactionPool,
+  minerInstance,
 };

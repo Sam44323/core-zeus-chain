@@ -5,6 +5,7 @@ import { chainInitializer } from "./utils/block-initializer";
 import zeusChainRoute from "./routes/zeusChain.routes";
 import transactionRoutes from "./routes/transactions.routes";
 import userRoutes from "./routes/user.routes";
+import mineRoutes from "./routes/mine.routes";
 import logger from "./helper/winston_config";
 
 dotenv.config({
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use("/blocks", zeusChainRoute);
 app.use("/transactions", transactionRoutes);
 app.use("/user", userRoutes);
+app.use("/mine", mineRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
