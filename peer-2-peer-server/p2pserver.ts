@@ -144,6 +144,16 @@ class P2PServer {
       this.sendTransaction(socket, transaction)
     );
   }
+
+  /**
+   * @description: Method for broadcasting the peers to clear the transaction pool
+   */
+
+  clearTransactionPool() {
+    this.sockets.forEach((socket: WebSocket) =>
+      socket.send(JSON.stringify({ type: MESSAGE_OPTION.clear }))
+    );
+  }
 }
 
 export default P2PServer;
