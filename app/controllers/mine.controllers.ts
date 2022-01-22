@@ -10,6 +10,6 @@ export const mineBlock = async (_req: Request, res: Response) => {
     ${block.toString()}`
   );
   res.status(200).json({
-    message: "Block mined successfully",
+    message: "Block mined successfully!",
   });
 };
