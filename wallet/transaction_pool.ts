@@ -88,6 +88,14 @@ class TransactionPool {
       return transaction;
     });
   }
+
+  /**
+   * @description: method for clearing the transaction pool
+   */
+
+  clearTransactionPool() {
+    this.transactions = [];
+  }
 }
 
 export default TransactionPool;
