@@ -35,13 +35,10 @@ class Miner {
     validTransactions.push(
       Transaction.rewardTransaction(this.wallet, Wallet.blockchainWallet())
     );
-    /**
-     * @todo: add logic for include a reward for the miner
-     */
 
-    /**
-     * @todo: creating a block with the valid transactions
-     */
+    //creating a block with the valid transactions
+
+    const block = this.blockchain.addBlock(validTransactions);
 
     /**
      * @todo: synchronize the blockchain with the p2p-network
