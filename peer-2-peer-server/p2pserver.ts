@@ -146,7 +146,7 @@ class P2PServer {
   }
 
   /**
-   * @description: Method for broadcasting the peers to clear the transaction pool
+   * @description: Method for broadcasting the peers to clear their transaction pool
    */
 
   broadcastClearTransactionPool() {
