@@ -47,12 +47,12 @@ class Miner {
     /**
      * @description: synchronize the blockchain with the p2p-network
      */
-
     this.p2pServer.syncChains();
 
     /**
-     * @todo: clear the transaction pool local to this miner
+     * @description: clear the transaction pool local to this miner
      */
+    this.transactionPool.clearTransactionPool();
 
     /**
      * @todo: broadcast to every miner in the network to clear their transaction pools
