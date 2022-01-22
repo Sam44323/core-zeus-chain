@@ -82,10 +82,17 @@ class P2PServer {
       const data: { type: MESSAGE_OPTION_TYPES; data: any } =
         JSON.parse(message); // converting the stringified JSON message to JSON object
       console.log(data);
-      if (data.type === MESSAGE_OPTION.chain) {
-        this.blockchain.replaceChain({ chain: data } as any); // trying to replace the current chain with the new one received from the peers with longer-chain in action
-      } else {
-        this.transactionPool.updateOrAddTransaction(data.data); // updating the transaction pool with the new transaction received from the peers
+      switch (data.type) {
+        case MESSAGE_OPTION.chain:
+          this.blockchain.replaceChain({ chain: data } as any); // trying to replace the current chain with the new one received from the peers with longer-chain in action
+          break;
+        case MESSAGE_OPTION.transaction:
+          this.transactionPool.updateOrAddTransaction(data.data); // updating the transaction pool with the new transaction received from the peers
+          break;
+        case MESSAGE_OPTION.clear:
+          break;
+        default:
+          console.log("Invalid message type");
       }
     });
   }
