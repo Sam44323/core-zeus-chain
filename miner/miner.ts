@@ -57,6 +57,7 @@ class Miner {
     /**
      * @todo: broadcast to every miner in the network to clear their transaction pools
      */
+    this.p2pServer.broadcastClearTransactionPool();
   }
 }
 
