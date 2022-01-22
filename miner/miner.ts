@@ -26,7 +26,9 @@ class Miner {
    * Method that will take transactions from the transaction pool and mine a block and then broadcast it to the network using the p2p server and then clear the transaction pool
    */
   mint() {
-    // miner will be getting the valid transactions from the transaction pool
+    /**
+     * @description:  miner will be getting the valid transactions from the transaction pool
+     */
     const validTransactions = this.transactionPool.validTransactions();
 
     /**
@@ -36,7 +38,9 @@ class Miner {
       Transaction.rewardTransaction(this.wallet, Wallet.blockchainWallet())
     );
 
-    //creating a block with the valid transactions
+    /**
+     * @description: creating a block with the valid transactions
+     */
 
     const block = this.blockchain.addBlock(validTransactions);
 
