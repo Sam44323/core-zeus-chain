@@ -45,8 +45,10 @@ class Miner {
     const block = this.blockchain.addBlock(validTransactions);
 
     /**
-     * @todo: synchronize the blockchain with the p2p-network
+     * @description: synchronize the blockchain with the p2p-network
      */
+
+    this.p2pServer.syncChains();
 
     /**
      * @todo: clear the transaction pool local to this miner
