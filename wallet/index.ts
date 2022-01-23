@@ -2,6 +2,8 @@ import ChainUtil, { EC } from "../utils/chain-util";
 import { INITIAL_BALANCE } from "../utils/constants";
 import TransactionPool from "./transaction_pool";
 import Transaction from "./transaction";
+import Blockchain from "../core/blockchain";
+import Block from "../core/block";
 
 class Wallet {
   public balance: number;
@@ -80,8 +82,21 @@ class Wallet {
   /**
    * @description: Method for calculating the balance of the wallet based on the recent transaction processed by the wallet
    */
+  calculateBalance(blockchain: Blockchain) {
+    let balance = this.balance; // initial balance_setter
+    let recentTransactionForWallet: any = "";
 
-  static calculateBalance() {}
+    blockchain.chain.forEach((block: Block) =>
+      block.data.forEach((transaction: Transaction) => {
+        if (
+          new Date().getTime() > transaction.input.time &&
+          transaction.input.address === this.publicKey
+        ) {
+          recentTransactionForWallet = transaction; // looking for the recent transaction for the wallet
+        }
+      })
+    );
+  }
 }
 
 export default Wallet;
