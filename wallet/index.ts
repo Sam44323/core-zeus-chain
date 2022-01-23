@@ -76,6 +76,12 @@ class Wallet {
 
     return blockchainWallet;
   }
+
+  /**
+   * @description: Method for calculating the balance of the wallet based on the recent transaction processed by the wallet
+   */
+
+  static calculateBalance() {}
 }
 
 export default Wallet;
