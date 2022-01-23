@@ -87,5 +87,41 @@ describe("Test for wallet", () => {
         INITIAL_BALANCE - addBalance * repeatAdd
       );
     });
+
+    describe("recipients conducts transactions", () => {
+      let subtractBalance: number, recipientBalance: number;
+
+      beforeEach(() => {
+        transactionPool.clearTransactionPool();
+        subtractBalance = 49;
+        recipientBalance = wallet.calculateBalance(chain);
+        wallet.createTransaction(
+          senderWallet.publicKey,
+          subtractBalance,
+          transactionPool,
+          chain
+        );
+        chain.addBlock(transactionPool.transactions);
+      });
+
+      describe("sender sends another transactions to the recipient", () => {
+        beforeEach(() => {
+          transactionPool.clearTransactionPool();
+          senderWallet.createTransaction(
+            wallet.publicKey,
+            addBalance,
+            transactionPool,
+            chain
+          );
+          chain.addBlock(transactionPool.transactions);
+        });
+
+        it("calculating the balance of the balance of the recipient using the most recent_transaction", () => {
+          expect(wallet.calculateBalance(chain)).toEqual(
+            recipientBalance - subtractBalance + addBalance
+          );
+        });
+      });
+    });
   });
 });
