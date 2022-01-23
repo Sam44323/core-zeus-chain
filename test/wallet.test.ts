@@ -2,6 +2,7 @@ import Wallet from "../wallet/index";
 import TransactionPool from "../wallet/transaction_pool";
 import Transaction from "../wallet/transaction";
 import Blockchain from "../core/blockchain";
+import { INITIAL_BALANCE } from "../utils/constants";
 
 describe("Test for wallet", () => {
   let wallet: Wallet,
@@ -75,6 +76,16 @@ describe("Test for wallet", () => {
       chain.addBlock(transactionPool.transactions); // adding the transaction to the chain to facilitate the balance calculation
     });
 
-    it("calculates the balance of the transaction recipient for the chain", () => {});
+    it("calculates the balance of the transaction recipient for the chain", () => {
+      expect(wallet.calculateBalance(chain)).toEqual(
+        INITIAL_BALANCE + addBalance * repeatAdd
+      );
+    });
+
+    it("calculates the balance for blockchain transactions matching the sender", () => {
+      expect(senderWallet.calculateBalance(chain)).toEqual(
+        INITIAL_BALANCE - addBalance * repeatAdd
+      );
+    });
   });
 });
