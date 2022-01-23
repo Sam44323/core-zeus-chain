@@ -81,7 +81,7 @@ class Wallet {
   /**
    * @description: Method for calculating the balance of the wallet based on the recent transaction processed by the wallet
    */
-  calculateBalance(blockchain: Blockchain) {
+  calculateBalance(blockchain: Blockchain): number {
     let balance = this.balance; // initial balance_setter
     let currentWalletTransactions: Transaction[] | any[] = [];
     let lastTimestamp: number = 0;
@@ -105,6 +105,8 @@ class Wallet {
         lastTimestamp = transaction.input.timestamp;
       }
     });
+
+    return balance;
   }
 }
 
