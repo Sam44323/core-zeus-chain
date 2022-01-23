@@ -3,7 +3,6 @@ import { INITIAL_BALANCE } from "../utils/constants";
 import TransactionPool from "./transaction_pool";
 import Transaction from "./transaction";
 import Blockchain from "../core/blockchain";
-import Block from "../core/block";
 
 class Wallet {
   public balance: number;
@@ -84,22 +83,28 @@ class Wallet {
    */
   calculateBalance(blockchain: Blockchain) {
     let balance = this.balance; // initial balance_setter
-    let recentTransactionForWallet: Transaction | any;
+    let currentWalletTransactions: Transaction[] | any[] = [];
+    let lastTimestamp: number = 0;
 
-    blockchain.chain.forEach((block: Block) =>
-      block.data.forEach((transaction: Transaction) => {
-        if (
-          new Date().getTime() > transaction.input.time &&
-          transaction.input.address === this.publicKey
-        ) {
-          recentTransactionForWallet = transaction; // looking for the recent transaction for the wallet
-        }
-      })
+    // getting all the transactions present in the chain
+    blockchain.chain.forEach((block) =>
+      block.data.forEach((transaction: Transaction) =>
+        currentWalletTransactions.push(transaction)
+      )
     );
 
-    balance = recentTransactionForWallet.output.find(
-      (o: any) => o.address === this.publicKey
-    ).amount; // getting the balance from the recent transaction for the sender
+    // getting the transactions from the currentWalletTransactions array that are made by the current wallet
+    currentWalletTransactions = currentWalletTransactions.filter(
+      (transaction) => transaction.input.address === this.publicKey
+    );
+
+    // getting the balance for the sender for the latest_transaction
+    currentWalletTransactions.forEach((transaction: Transaction) => {
+      if (transaction.input.timestamp > lastTimestamp) {
+        balance = transaction.input.amount;
+        lastTimestamp = transaction.input.timestamp;
+      }
+    });
   }
 }
 
