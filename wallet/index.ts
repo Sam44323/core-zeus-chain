@@ -84,7 +84,7 @@ class Wallet {
    */
   calculateBalance(blockchain: Blockchain) {
     let balance = this.balance; // initial balance_setter
-    let recentTransactionForWallet: Transaction;
+    let recentTransactionForWallet: Transaction | any;
 
     blockchain.chain.forEach((block: Block) =>
       block.data.forEach((transaction: Transaction) => {
@@ -96,6 +96,10 @@ class Wallet {
         }
       })
     );
+
+    balance = recentTransactionForWallet.output.find(
+      (o: any) => o.address === this.publicKey
+    ).amount; // getting the balance from the recent transaction for the sender
   }
 }
 
