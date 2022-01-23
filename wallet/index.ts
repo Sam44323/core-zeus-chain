@@ -89,7 +89,6 @@ class Wallet {
     let currentWalletTransactions: Transaction[] | any[] = [];
     let lastTimestamp: number = 0;
 
-    // getting all the transactions present in the chain
     blockchain.chain.forEach((block) =>
       block.data.forEach((transaction: Transaction) =>
         currentWalletTransactions.push(transaction)
