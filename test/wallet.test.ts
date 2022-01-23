@@ -60,8 +60,17 @@ describe("Test for wallet", () => {
 
     beforeEach(() => {
       senderWallet = new Wallet();
-      addBalance = 100; // setting some arbitrary value(make sure the addition of addBalance and repeatAdd is not above the initial balance for the sender[which for this case i 500])
-      repeatAdd = 4; // setting some arbitrary value(make sure the addition of addBalance and repeatAdd is not above the initial balance for the sender[which for this case i 500])
+      addBalance = 100; // setting some arbitrary value(make sure the multiplication of addBalance and repeatAdd is not above the initial balance for the sender[which for this case i 500])
+      repeatAdd = 4; // setting some arbitrary value(make sure the multiplication of addBalance and repeatAdd is not above the initial balance for the sender[which for this case i 500])
+
+      for (let i = 0; i < repeatAdd; i++) {
+        senderWallet.createTransaction(
+          wallet.publicKey,
+          addBalance,
+          transactionPool,
+          chain
+        );
+      }
     });
   });
 });
