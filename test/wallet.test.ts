@@ -71,6 +71,10 @@ describe("Test for wallet", () => {
           chain
         );
       }
+
+      chain.addBlock(transactionPool.transactions); // adding the transaction to the chain to facilitate the balance calculation
     });
+
+    it("calculates the balance of the transaction recipient for the chain", () => {});
   });
 });
