@@ -104,7 +104,7 @@ describe("Test for wallet", () => {
         chain.addBlock(transactionPool.transactions);
       });
 
-      describe("sender sends another transactions to the recipient", () => {
+      describe("sender will send another transactions to the recipient", () => {
         beforeEach(() => {
           transactionPool.clearTransactionPool();
           senderWallet.createTransaction(
