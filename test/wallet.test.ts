@@ -113,6 +113,7 @@ describe("Test for wallet", () => {
             transactionPool,
             chain
           );
+
           chain.addBlock(transactionPool.transactions);
         });
 
