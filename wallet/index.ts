@@ -64,6 +64,8 @@ class Wallet {
       transactionPool.updateOrAddTransaction(transaction!);
     }
 
+    this.balance = this.calculateBalance(blockchain);
+
     return transaction;
   }
 
