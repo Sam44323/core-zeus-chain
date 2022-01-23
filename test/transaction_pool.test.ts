@@ -1,15 +1,23 @@
 import Transaction from "../wallet/transaction";
 import TransactionPool from "../wallet/transaction_pool";
 import Wallet from "../wallet/index";
+import Blockchain from "../core/blockchain";
 
 describe("Test for transaction-pool", () => {
   let transactionPool: TransactionPool,
     transaction: Transaction,
-    wallet: Wallet;
+    wallet: Wallet,
+    blockchain: Blockchain;
   beforeEach(() => {
     transactionPool = new TransactionPool();
     wallet = new Wallet();
-    transaction = wallet.createTransaction("recipient", 10, transactionPool);
+    blockchain = new Blockchain();
+    transaction = wallet.createTransaction(
+      "recipient",
+      10,
+      transactionPool,
+      blockchain
+    );
   });
 
   it("adds a valid transaction to the pool", () => {
@@ -46,7 +54,8 @@ describe("Test for transaction-pool", () => {
         transaction = wallet.createTransaction(
           "recipient",
           10,
-          transactionPool
+          transactionPool,
+          blockchain
         );
         if (i % 2 === 0) {
           transaction.input.amount = 999999;
