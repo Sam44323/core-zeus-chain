@@ -49,4 +49,19 @@ describe("Test for wallet", () => {
       transaction.output.filter((o: any) => o.address === recipient).length
     ).toEqual(2);
   });
+
+  describe("calculating a balance of the wallet", () => {
+    let addBalance: number, repeatAdd: number, senderWallet: Wallet;
+
+    /**
+     * addBalance: the amount we want to send the transaction to other wallet
+     * repeatAdd: times we want to repeat this process
+     */
+
+    beforeEach(() => {
+      senderWallet = new Wallet();
+      addBalance = 100; // setting some arbitrary value(make sure the addition of addBalance and repeatAdd is not above the initial balance for the sender[which for this case i 500])
+      repeatAdd = 4; // setting some arbitrary value(make sure the addition of addBalance and repeatAdd is not above the initial balance for the sender[which for this case i 500])
+    });
+  });
 });
