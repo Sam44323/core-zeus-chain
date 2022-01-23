@@ -41,7 +41,8 @@ class Wallet {
   createTransaction(
     recipient: string,
     amount: number,
-    transactionPool: TransactionPool
+    transactionPool: TransactionPool,
+    blockchain: Blockchain
   ) {
     if (amount > this.balance) {
       console.log(

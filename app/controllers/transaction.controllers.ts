@@ -1,6 +1,11 @@
 import { Request, Response } from "express";
 import Transaction from "../../wallet/transaction";
-import { p2pServer, transactionPool, wallet } from "../utils/block-initializer";
+import {
+  p2pServer,
+  transactionPool,
+  wallet,
+  getZeusBlockchain,
+} from "../utils/block-initializer";
 
 /**
  * @param req request
@@ -27,7 +32,8 @@ export const createTransaction = async (req: Request, res: Response) => {
   const transaction: Transaction = wallet.createTransaction(
     recipient,
     amount,
-    transactionPool
+    transactionPool,
+    getZeusBlockchain()
   )!;
   p2pServer.broadcastTransaction(transaction);
   res.status(201).json({
