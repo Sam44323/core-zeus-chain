@@ -42,8 +42,10 @@ class Wallet {
     recipient: string,
     amount: number,
     transactionPool: TransactionPool,
-    blockchain: Blockchain
+    blockchain: Blockchain = new Blockchain()
   ) {
+    console.log("Blockchain", blockchain);
+
     if (amount > this.balance) {
       console.log(
         `Amount ${amount} exceeds the current wallet balance of ${this.balance}`

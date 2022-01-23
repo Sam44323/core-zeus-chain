@@ -9,10 +9,10 @@ describe("Test for wallet", () => {
     amount: number,
     recipient: string,
     transactionPool: TransactionPool,
-    blockchain: Blockchain;
+    chain: Blockchain;
   beforeEach(() => {
+    chain = new Blockchain();
     wallet = new Wallet();
-    blockchain = new Blockchain();
     transactionPool = new TransactionPool();
     amount = 49;
     recipient = "r4nd0m-4ddr355";
@@ -20,7 +20,7 @@ describe("Test for wallet", () => {
       recipient,
       amount,
       transactionPool,
-      blockchain
+      chain
     );
   });
 
@@ -35,14 +35,16 @@ describe("Test for wallet", () => {
   });
 
   it("doubles the `sendAmount` subtracted from the balance of the wallet and update the created transaction for that wallet in the pool", () => {
-    wallet.createTransaction(recipient, amount, transactionPool, blockchain);
+    console.log("Chain", chain);
+
+    wallet.createTransaction(recipient, amount, transactionPool, chain);
     expect(
       transaction.output.find((o: any) => o.address === wallet.publicKey).amount
     ).toEqual(wallet.balance - amount * 2);
   });
 
   it("clones the `sendAmount` output for the recipient", () => {
-    wallet.createTransaction(recipient, amount, transactionPool, blockchain);
+    wallet.createTransaction(recipient, amount, transactionPool, chain);
     expect(
       transaction.output.filter((o: any) => o.address === recipient).length
     ).toEqual(2);
